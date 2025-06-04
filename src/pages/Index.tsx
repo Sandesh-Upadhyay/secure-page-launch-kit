@@ -1,6 +1,7 @@
 
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
+import TechShowcase from "../components/TechShowcase";
 import ProductPlans from "../components/ProductPlans";
 import ComparisonTable from "../components/ComparisonTable";
 import BenefitsSection from "../components/BenefitsSection";
@@ -13,6 +14,7 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <Header />
       <HeroSection />
+      <TechShowcase />
       <ProductPlans />
       <ComparisonTable />
       <BenefitsSection />

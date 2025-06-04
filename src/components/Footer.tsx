@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-6">
               <Shield className="h-8 w-8 text-blue-400" />
-              <span className="text-2xl font-bold">SecureShield</span>
+              <span className="text-2xl font-bold">Secure Shield</span>
             </div>
             <p className="text-gray-300 mb-6 max-w-md">
               Leading provider of comprehensive cybersecurity solutions. 
@@ -47,7 +47,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-300 mb-4 md:mb-0">
-              © 2024 SecureShield. All rights reserved.
+              © 2024 Secure Shield. All rights reserved.
             </div>
             <div className="flex space-x-6">
               <a href="#" className="text-gray-300 hover:text-white transition-colors">Privacy Policy</a>

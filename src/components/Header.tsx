@@ -30,7 +30,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <Shield className="h-8 w-8 text-blue-600" />
-          <span className="text-2xl font-bold text-gray-900">SecureShield</span>
+          <span className="text-2xl font-bold text-gray-900">Secure Shield</span>
         </div>
 
         <nav className="hidden md:flex items-center space-x-8">
