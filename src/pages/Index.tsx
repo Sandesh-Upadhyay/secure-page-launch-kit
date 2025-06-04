@@ -1,6 +1,8 @@
 
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
+import TrustBadges from "../components/TrustBadges";
+import DealsShowcase from "../components/DealsShowcase";
 import TechShowcase from "../components/TechShowcase";
 import ProductPlans from "../components/ProductPlans";
 import ComparisonTable from "../components/ComparisonTable";
@@ -11,9 +13,11 @@ import Footer from "../components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen bg-white">
       <Header />
       <HeroSection />
+      <TrustBadges />
+      <DealsShowcase />
       <TechShowcase />
       <ProductPlans />
       <ComparisonTable />
