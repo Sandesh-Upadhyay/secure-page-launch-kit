@@ -1,54 +1,265 @@
-
 import { Button } from "@/components/ui/button";
-import { Shield, Download, Star, CheckCircle } from "lucide-react";
+import { Search } from "lucide-react";
 
 const HeroSection = () => {
+  const products = [
+    {
+      name: "McAfee AntiVirus",
+      subtitle: "1-Year / 3-PCS",
+      originalPrice: 26.99,
+      salePrice: 22.99,
+      image: "/mcafee-antivirus-2.webp",
+      link: "/product/mcafee-antivirus-1-year-3-pcs",
+    },
+    {
+      name: "Avast Premium Security",
+      subtitle: "10 Devices, 1 Year, Global",
+      originalPrice: 109.0,
+      salePrice: 99.0,
+      image: "/Avast-320x320.png",
+      link: "/product/avast-premium-security-10-devices-1-year",
+    },
+    {
+      name: "Bitdefender Antivirus Plus",
+      subtitle: "2 Years | 1 Device | Windows | Downloadable",
+      originalPrice: 89.99,
+      salePrice: 47.99,
+      image: "/bit-av-1-600x600.png",
+      link: "/product/bitdefender-antivirus-plus-2-years-1-device",
+    },
+    {
+      name: "McAfee Internet Security",
+      subtitle: "1-Year / 3-Devices",
+      originalPrice: 44.99,
+      salePrice: 34.99,
+      image: "/mcafee-internet-security.webp",
+      link: "/product/mcafee-internet-security-1-year-3-devices",
+    },
+  ];
+
+  const handleProductClick = (link: string) => {
+    window.open(link, "_blank");
+  };
+
   return (
-    <section className="relative pt-24 pb-16 overflow-hidden bg-gradient-to-br from-red-600 via-red-700 to-red-800">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]"></div>
-      
-      <div className="relative container mx-auto px-4">
-        <div className="text-center">
-          <div className="inline-flex items-center bg-yellow-400 text-black px-6 py-2 rounded-full font-bold text-lg mb-6">
-            🔥 LIMITED TIME OFFER - UP TO 85% OFF!
-          </div>
-          
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-            Best Antivirus Deals
-            <span className="block text-yellow-400">Save Big Today!</span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-red-100 mb-8 max-w-4xl mx-auto">
-            Get premium antivirus protection at unbeatable prices. 
-            Protect your devices with award-winning security software.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button className="bg-yellow-400 hover:bg-yellow-500 text-black px-8 py-4 text-lg font-bold rounded-lg shadow-lg transform hover:scale-105 transition-all duration-200">
-              <Download className="mr-2 h-5 w-5" />
-              Shop Now & Save 85%
-            </Button>
-            <Button variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg rounded-lg">
-              View All Deals
-            </Button>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto text-white">
-            <div className="flex items-center justify-center space-x-3">
-              <CheckCircle className="h-6 w-6 text-yellow-400" />
-              <span>Instant Download</span>
+    <section className="py-12 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
+          {products.map((product, index) => (
+            <div
+              key={index}
+              className="relative bg-white p-6 pt-10 rounded-lg shadow-md hover:shadow-xl transition-all cursor-pointer"
+              onClick={() => handleProductClick(product.link)}
+            >
+              <div className="absolute -top-2 right-4 bg-red-500 text-white text-sm px-3 py-1.5 rounded-full z-10">
+                SALE
+              </div>
+              <div className="aspect-square relative mb-4">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="text-center">
+                <h3 className="text-lg font-bold mb-1">{product.name}</h3>
+                <p className="text-sm text-gray-600 mb-2">{product.subtitle}</p>
+                <div className="flex justify-center items-center gap-2 mb-4">
+                  <span className="text-gray-400 line-through">
+                    ${product.originalPrice.toFixed(2)}
+                  </span>
+                  <span className="text-xl font-bold">
+                    ${product.salePrice.toFixed(2)}
+                  </span>
+                </div>
+                <Button
+                  className="w-full bg-zinc-800 hover:bg-zinc-700 text-white text-sm px-3 py-1.5 rounded-full z-10"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    // Add to cart logic here
+                  }}
+                >
+                  Add to cart
+                </Button>
+              </div>
             </div>
-            <div className="flex items-center justify-center space-x-3">
-              <CheckCircle className="h-6 w-6 text-yellow-400" />
-              <span>30-Day Money Back</span>
-            </div>
-            <div className="flex items-center justify-center space-x-3">
-              <CheckCircle className="h-6 w-6 text-yellow-400" />
-              <span>24/7 Support</span>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
+
+
+     <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
+          {products.map((product, index) => (
+            <div
+              key={index}
+              className="relative bg-white p-6 pt-10 rounded-lg shadow-md hover:shadow-xl transition-all cursor-pointer"
+              onClick={() => handleProductClick(product.link)}
+            >
+              <div className="absolute -top-2 right-4 bg-red-500 text-white text-sm px-3 py-1.5 rounded-full z-10">
+                SALE
+              </div>
+              <div className="aspect-square relative mb-4">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="text-center">
+                <h3 className="text-lg font-bold mb-1">{product.name}</h3>
+                <p className="text-sm text-gray-600 mb-2">{product.subtitle}</p>
+                <div className="flex justify-center items-center gap-2 mb-4">
+                  <span className="text-gray-400 line-through">
+                    ${product.originalPrice.toFixed(2)}
+                  </span>
+                  <span className="text-xl font-bold">
+                    ${product.salePrice.toFixed(2)}
+                  </span>
+                </div>
+                <Button
+                  className="w-full bg-zinc-800 hover:bg-zinc-700"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    // Add to cart logic here
+                  }}
+                >
+                  Add to cart
+                </Button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
+          {products.map((product, index) => (
+            <div
+              key={index}
+              className="relative bg-white p-6 pt-10 rounded-lg shadow-md hover:shadow-xl transition-all cursor-pointer"
+              onClick={() => handleProductClick(product.link)}
+            >
+              <div className="absolute -top-2 right-4 bg-red-500 text-white text-sm px-3 py-1.5 rounded-full z-10">
+                SALE
+              </div>
+              <div className="aspect-square relative mb-4">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="text-center">
+                <h3 className="text-lg font-bold mb-1">{product.name}</h3>
+                <p className="text-sm text-gray-600 mb-2">{product.subtitle}</p>
+                <div className="flex justify-center items-center gap-2 mb-4">
+                  <span className="text-gray-400 line-through">
+                    ${product.originalPrice.toFixed(2)}
+                  </span>
+                  <span className="text-xl font-bold">
+                    ${product.salePrice.toFixed(2)}
+                  </span>
+                </div>
+                <Button
+                  className="w-full bg-zinc-800 hover:bg-zinc-700"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    // Add to cart logic here
+                  }}
+                >
+                  Add to cart
+                </Button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
+          {products.map((product, index) => (
+            <div
+              key={index}
+              className="relative bg-white p-6 pt-10 rounded-lg shadow-md hover:shadow-xl transition-all cursor-pointer"
+              onClick={() => handleProductClick(product.link)}
+            >
+              <div className="absolute -top-2 right-4 bg-red-500 text-white text-sm px-3 py-1.5 rounded-full z-10">
+                SALE
+              </div>
+              <div className="aspect-square relative mb-4">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="text-center">
+                <h3 className="text-lg font-bold mb-1">{product.name}</h3>
+                <p className="text-sm text-gray-600 mb-2">{product.subtitle}</p>
+                <div className="flex justify-center items-center gap-2 mb-4">
+                  <span className="text-gray-400 line-through">
+                    ${product.originalPrice.toFixed(2)}
+                  </span>
+                  <span className="text-xl font-bold">
+                    ${product.salePrice.toFixed(2)}
+                  </span>
+                </div>
+                <Button
+                  className="w-full bg-zinc-800 hover:bg-zinc-700"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    // Add to cart logic here
+                  }}
+                >
+                  Add to cart
+                </Button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8">
+          {products.map((product, index) => (
+            <div
+              key={index}
+              className="relative bg-white p-6 pt-10 rounded-lg shadow-md hover:shadow-xl transition-all cursor-pointer"
+              onClick={() => handleProductClick(product.link)}
+            >
+              <div className="absolute -top-2 right-4 bg-red-500 text-white text-sm px-3 py-1.5 rounded-full z-10">
+                SALE
+              </div>
+              <div className="aspect-square relative mb-4">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="text-center">
+                <h3 className="text-lg font-bold mb-1">{product.name}</h3>
+                <p className="text-sm text-gray-600 mb-2">{product.subtitle}</p>
+                <div className="flex justify-center items-center gap-2 mb-4">
+                  <span className="text-gray-400 line-through">
+                    ${product.originalPrice.toFixed(2)}
+                  </span>
+                  <span className="text-xl font-bold">
+                    ${product.salePrice.toFixed(2)}
+                  </span>
+                </div>
+                <Button
+                  className="w-full bg-zinc-800 hover:bg-zinc-700"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    // Add to cart logic here
+                  }}
+                >
+                  Add to cart
+                </Button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div> 
     </section>
   );
 };
