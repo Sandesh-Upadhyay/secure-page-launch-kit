@@ -40,7 +40,7 @@ const Header = () => {
       <div className="bg-[#E67E22] text-white py-1 text-sm">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center">
-            <span className="font-medium">BEST AV DEALS</span>
+            <span className="font-medium">norton solution</span>
           </div>
           <div className="flex items-center space-x-4">
             <div className="flex items-center">
@@ -59,9 +59,9 @@ const Header = () => {
           {/* Logo - Left on desktop, centered on mobile */}
           <div className="flex items-center justify-center md:justify-start w-full md:w-auto mb-4 md:mb-0">
             <img 
-              src="/cropped-cropped-NortonFull-1.jpg" 
+              src="/nortonlogo.jpg" 
               alt="Norton" 
-              className="h-10" 
+              className="h-10 rounded-sm" 
             />
           </div>
 
