@@ -9,7 +9,10 @@ import ComparisonTable from "../components/ComparisonTable";
 import BenefitsSection from "../components/BenefitsSection";
 import TrustSection from "../components/TrustSection";
 import FAQSection from "../components/FAQSection";
+import TermsSection from "../components/TermsSection";
 import Footer from "../components/Footer";
+import PrivacySection from "@/components/PrivacySection";
+import RefundCancellation from "@/components/RefundCancellation";
 
 const Index = () => {
   return (
@@ -22,8 +25,10 @@ const Index = () => {
       <ProductPlans />
       <ComparisonTable />
       <BenefitsSection />
-      <TrustSection />
-      <FAQSection />
+      <TrustSection />      <FAQSection />
+      <TermsSection />
+      <PrivacySection />
+      <RefundCancellation />
       <Footer />
     </div>
   );
