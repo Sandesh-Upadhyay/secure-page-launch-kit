@@ -73,10 +73,8 @@ const Header = () => {
                 placeholder="Search..." 
                 className="w-full py-2 px-4 pr-10 bg-[#ECF0F1] border-none rounded-l-md focus:outline-none focus:ring-1 focus:ring-[#E67E22] search-input"
               />
-              <button 
-                type="submit" 
-                className="bg-[#E67E22] text-white px-4 py-2 rounded-r-md hover:bg-[#D35400] transition-colors duration-300 search-button"
-              >
+              <button type="submit" 
+                className="bg-[#E67E22] text-white px-4 py-2 rounded-r-md hover:bg-[#D35400] transition-colors duration-300 search-button">
                 <Search className="h-5 w-5" />
               </button>
             </form>
@@ -100,13 +98,14 @@ const Header = () => {
                 className="text-white hover:text-[#E67E22] transition-colors duration-300 font-medium"
               >
                 Home
-              </button>
-              <button
-                onClick={() => scrollToSection("shop")}
+              </button>              <a
+                href="/shop"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-white hover:text-[#E67E22] transition-colors duration-300 font-medium"
               >
                 Shop
-              </button>
+              </a>
               <button
                 onClick={() => scrollToSection("cookies")}
                 className="text-[#BDC3C7] hover:text-[#E67E22] transition-colors duration-300 font-medium"
