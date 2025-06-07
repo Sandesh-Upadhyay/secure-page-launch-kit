@@ -4,10 +4,25 @@ import Footer from "../components/Footer";
 import TrustBadges from "../components/TrustBadges";
 import ProductPlans from "../components/ProductPlans";
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/contexts/CartContext";
+import { useAuth } from "@/contexts/AuthContext";
+
+interface Product {
+  id: string;
+  name: string;
+  subtitle: string;
+  price: number;
+  originalPrice: number;
+  image: string;
+  features: string[];
+}
 
 const Shop = () => {
-  const products = [
+  const { addItem } = useCart();
+  const { isAuthenticated } = useAuth();
+  const products: Product[] = [
     {
+      id: "avast-premium",
       name: "Avast Premium Security",
       subtitle: "10 Devices, 1 Year",
       price: 99.0,
@@ -22,6 +37,7 @@ const Shop = () => {
       ],
     },
     {
+      id: "avg-security",
       name: "AVG Internet Security",
       subtitle: "Enhanced Firewall Protection",
       price: 60.0,
@@ -36,6 +52,7 @@ const Shop = () => {
       ],
     },
     {
+      id: "bitdefender",
       name: "Bitdefender Antivirus Plus",
       subtitle: "Award-winning Protection",
       price: 47.99,
@@ -50,6 +67,7 @@ const Shop = () => {
       ],
     },
     {
+      id: "mcafee",
       name: "McAfee Antivirus",
       subtitle: "1 Year Subscription",
       price: 22.99,
@@ -64,6 +82,16 @@ const Shop = () => {
       ],
     },
   ];
+
+  const handleAddToCart = (product: Product) => {
+    addItem({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      quantity: 1,
+    });
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -139,8 +167,11 @@ const Shop = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button className="w-full bg-[#E67E22] hover:bg-[#D35400] text-white">
-                    Buy Now
+                  <Button 
+                    className="w-full bg-[#E67E22] hover:bg-[#D35400] text-white"
+                    onClick={() => handleAddToCart(product)}
+                  >
+                    Add to Cart
                   </Button>
                 </div>
               </div>
