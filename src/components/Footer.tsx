@@ -1,5 +1,6 @@
 
 import { Shield, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import PaymentBanner from "./PaymentBanner";
 
 const Footer = () => {
   return (
@@ -45,14 +46,17 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-800 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="text-gray-300 mb-4 md:mb-0">
-              © 2024 Secure Shield. All rights reserved.
-            </div>
-            <div className="flex space-x-6">
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">Terms of Service</a>
-              <a href="#" className="text-gray-300 hover:text-white transition-colors">Cookie Policy</a>
+          <div className="flex flex-col space-y-4">
+            <PaymentBanner />
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <div className="text-gray-300 mb-4 md:mb-0">
+                © 2024 Secure Shield. All rights reserved.
+              </div>
+              <div className="flex space-x-6">
+                <a href="#" className="text-gray-300 hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" className="text-gray-300 hover:text-white transition-colors">Terms of Service</a>
+                <a href="#" className="text-gray-300 hover:text-white transition-colors">Cookie Policy</a>
+              </div>
             </div>
           </div>
         </div>
