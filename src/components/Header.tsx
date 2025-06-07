@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Phone, Search, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -100,8 +99,6 @@ const Header = () => {
                 Home
               </button>              <a
                 href="/shop"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="text-white hover:text-[#E67E22] transition-colors duration-300 font-medium"
               >
                 Shop
