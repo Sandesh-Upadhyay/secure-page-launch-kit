@@ -16,21 +16,24 @@ import RefundCancellation from "@/components/RefundCancellation";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <main className="relative min-h-screen">
       <Header />
-      <HeroSection />
-      <TrustBadges />
-      <DealsShowcase />
-      <TechShowcase />
-      <ProductPlans />
-      <ComparisonTable />
-      <BenefitsSection />
-      <TrustSection />      <FAQSection />
-      <TermsSection />
-      <PrivacySection />
-      <RefundCancellation />
+      <main className="flex-1">
+        <HeroSection />
+        <TrustBadges />
+        <DealsShowcase />
+        <TechShowcase />
+        <ProductPlans />
+        <ComparisonTable />
+        <BenefitsSection />
+        <TrustSection />
+        <FAQSection />
+        <TermsSection />
+        <PrivacySection/>
+        <RefundCancellation />
+      </main>
       <Footer />
-    </div>
+    </main>
   );
 };
 
