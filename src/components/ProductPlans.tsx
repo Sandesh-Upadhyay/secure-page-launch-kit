@@ -105,8 +105,9 @@ const ProductPlans = () => {
                       ? "bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white"
                       : "bg-gray-900 hover:bg-gray-800 text-white"
                   }`}
+                  onClick={() => window.location.href = "https://wa.me/18775933166?text=Hello%2C%20I%20need%20assistance"}
                 >
-                  Choose {plan.name}
+                  Buy Now
                 </Button>
               </CardContent>
             </Card>

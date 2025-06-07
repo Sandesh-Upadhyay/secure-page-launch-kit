@@ -2,10 +2,18 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Shield, Star, Download, Clock } from "lucide-react";
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
+import { useCart } from '@/contexts/CartContext';
 
 const DealsShowcase = () => {
+  const navigate = useNavigate();
+  const { addItem } = useCart();
+  const { isAuthenticated } = useAuth();
+
   const deals = [
     {
+      id: "norton-360-deluxe",
       name: "Norton 360 Deluxe",
       originalPrice: "$149.99",
       salePrice: "$39.99",
@@ -17,6 +25,7 @@ const DealsShowcase = () => {
       badge: "BEST SELLER"
     },
     {
+      id: "mcafee-total-protection",
       name: "McAfee Total Protection",
       originalPrice: "$119.99",
       salePrice: "$29.99",
@@ -28,6 +37,7 @@ const DealsShowcase = () => {
       badge: "LIMITED TIME"
     },
     {
+      id: "bitdefender-internet-security",
       name: "Bitdefender Internet Security",
       originalPrice: "$89.99",
       salePrice: "$24.99",
@@ -112,9 +122,18 @@ const DealsShowcase = () => {
                   ))}
                 </ul>
 
-                <Button className="w-full bg-red-600 hover:bg-red-700 text-white py-3 text-lg font-bold rounded-lg">
+                <Button 
+                  className="w-full bg-red-600 hover:bg-red-700 text-white py-3 text-lg font-bold rounded-lg"
+                  onClick={() => {
+                    if (!isAuthenticated) {
+                      navigate('/login');
+                    } else {
+                      window.location.href = "https://wa.me/18775933166?text=Hello%2C%20I%20need%20assistance";
+                    }
+                  }}
+                >
                   <Download className="mr-2 h-5 w-5" />
-                  Get Deal Now
+                  Buy Now
                 </Button>
                 
                 <p className="text-xs text-gray-500 text-center mt-2">

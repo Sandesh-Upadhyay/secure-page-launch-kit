@@ -12,8 +12,6 @@ import Dashboard from "@/pages/Dashboard"
 import Register from "@/pages/Register"
 import NotFound from "@/pages/NotFound"
 import { CartPage } from "@/pages/CartPage"
-import "./App.css"
-import "./index.css"
 
 const queryClient = new QueryClient()
 
@@ -24,11 +22,9 @@ function App() {
         <TooltipProvider>
           <AuthProvider>
             <CartProvider>
-              <div className="relative min-h-screen bg-background font-sans antialiased">
-                <div className="relative flex min-h-screen flex-col">
-                <Toaster />
-                <Sonner />
-                <Routes>
+              <Toaster />
+              <Sonner />
+              <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/shop" element={<Shop />} />
                 <Route path="/cart" element={<CartPage />} />
@@ -37,8 +33,6 @@ function App() {
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
-                </div>
-              </div>
             </CartProvider>
           </AuthProvider>
         </TooltipProvider>
