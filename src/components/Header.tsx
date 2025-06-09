@@ -1,167 +1,216 @@
-import { useState, useEffect } from "react";
-import { Phone, Search, Menu } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react"
+import { cn } from "@/lib/utils"
+import { AnnouncementBar } from "./header/AnnouncementBar"
+import { Navigation } from "./header/Navigation"
+import { SearchActions } from "./header/SearchActions"
+import { MobileMenu } from "./header/MobileMenu"
+import { Search, Moon, Sun } from "lucide-react"
+import { useCart } from "@/contexts/CartContext"
+import { motion, AnimatePresence } from "framer-motion"
+import { useTheme } from "next-themes"
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("")
+  const [showSearchSuggestions, setShowSearchSuggestions] = useState(false)
+  const { cartItems = [] } = useCart()
+  const { theme, setTheme } = useTheme()
+
+  useEffect(() => {
+    setTheme('light') // Set light theme as default
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+      setIsScrolled(window.scrollY > 10)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    element?.scrollIntoView({ behavior: "smooth" });
-    setIsMobileMenuOpen(false);
-  };
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: "instant" })
+      window.scrollTo({
+        top: element.offsetTop - 80,
+        behavior: "smooth"
+      })
+    }
+    setIsMobileMenuOpen(false)
+  }
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark")
+  }
 
   const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    const searchInput = document.querySelector('.search-input') as HTMLInputElement;
-    if (searchInput && searchInput.value) {
-      // Redirect to search results page with query parameter
-      window.location.href = `/search?q=${encodeURIComponent(searchInput.value)}`;
+    e.preventDefault()
+    if (searchQuery.trim()) {
+      window.open(`/search?q=${encodeURIComponent(searchQuery.trim())}`, '_blank')
+      setSearchQuery("")
+      setShowSearchSuggestions(false)
     }
-  };
+  }
+
+  const popularSearches = [
+    "Norton 360",
+    "McAfee Total Protection",
+    "Bitdefender",
+    "VPN",
+    "Password Manager"
+  ]
 
   return (
     <>
-      {/* Top bar */}
-      <div className="bg-[#E67E22] text-white py-1 text-sm">
-        <div className="container mx-auto px-4 flex justify-between items-center">
-          <div className="flex items-center">
-            <span className="font-medium">norton solution</span>
-          </div>
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center">
-              <Phone className="h-4 w-4 mr-1" />
-              <span>Call To +1(833) 534-4002</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <AnnouncementBar />
 
-      {/* Main header */}
-      <header
-        className={`w-full z-50 transition-all duration-300 bg-[#2C3E50] ${isScrolled ? 'shadow-md' : ''}`}
-      >
-        <div className="container mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-4">
-          {/* Logo - Left on desktop, centered on mobile */}          <div className="flex items-center justify-center md:justify-start w-full md:w-auto mb-4 md:mb-0">
-            <img
-              src="/cropped-cropped-NortonFull-1.jpg"
-              alt="Norton"
-              className="h-10 object-contain"
-            />
-          </div>
-
-          {/* Search Bar - Center on both desktop and mobile */}
-          <div className="relative w-full md:w-1/3 order-3 md:order-2 mb-4 md:mb-0">
-            <form onSubmit={handleSearch} className="flex">
-              <input 
-                type="text" 
-                placeholder="Search..." 
-                className="w-full py-2 px-4 pr-10 bg-[#ECF0F1] border-none rounded-l-md focus:outline-none focus:ring-1 focus:ring-[#E67E22] search-input"
-              />
-              <button type="submit" 
-                className="bg-[#E67E22] text-white px-4 py-2 rounded-r-md hover:bg-[#D35400] transition-colors duration-300 search-button">
-                <Search className="h-5 w-5" />
-              </button>
-            </form>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden absolute right-4 top-[4.5rem] z-20">
-            <button 
-              onClick={toggleMobileMenu}
-              className="p-2 focus:outline-none text-white hover:text-[#E67E22] transition-colors duration-300"
+      <header className={cn(
+        "sticky top-0 w-full z-50 bg-gray-900 backdrop-blur-lg border-b border-gray-700 shadow-xl"
+      )}>
+        <div className="w-full px-4 py-3">
+          <div className="flex items-center justify-between gap-6">
+            <motion.div 
+              className="flex-shrink-0 flex items-center gap-3"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
             >
-              <Menu className="h-6 w-6" />
-            </button>
+              <motion.a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault()
+                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <img
+                  src="/nortonlogo.jpg"
+                  alt="AV Safe Solutions"
+                  className="h-10 w-auto max-w-[120px] rounded-lg cursor-pointer shadow-lg border border-white/20"
+                />
+              </motion.a>
+              <motion.div 
+                className="flex flex-col"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+              >
+                <span className="text-white font-bold text-lg hidden md:block bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-teal-300">
+                  AV Safe Solutions
+                </span>
+              </motion.div>
+            </motion.div>
+
+            <Navigation scrollToSection={scrollToSection} />
+
+            <div className="flex-1 max-w-xl mx-4 relative">
+              <form onSubmit={handleSearch} className="relative">
+                <motion.div
+                  className="relative"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => {
+                      setSearchQuery(e.target.value)
+                      setShowSearchSuggestions(e.target.value.length > 0)
+                    }}
+                    onFocus={() => setShowSearchSuggestions(true)}
+                    onBlur={() => setTimeout(() => setShowSearchSuggestions(false), 200)}
+                    placeholder="Search products..."
+                    className="w-full py-2 px-4 pr-10 rounded-full bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 border border-white/20"
+                  />
+                  <button
+                    type="submit"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors"
+                  >
+                    <Search className="h-5 w-5" />
+                  </button>
+                </motion.div>
+
+                <AnimatePresence>
+                  {showSearchSuggestions && searchQuery && (
+                    <motion.div
+                      className="absolute top-full left-0 right-0 mt-2 bg-white/5 backdrop-blur-lg rounded-xl shadow-xl border border-white/10 overflow-hidden"
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {popularSearches
+                        .filter(item => item.toLowerCase().includes(searchQuery.toLowerCase()))
+                        .map((item, index) => (
+                          <motion.div
+                            key={index}
+                            className="px-4 py-3 text-white hover:bg-white/10 cursor-pointer flex items-center gap-2"
+                            whileHover={{ x: 5 }}
+                            transition={{ type: "spring", stiffness: 300 }}
+                            onClick={() => {
+                              setSearchQuery(item)
+                              setShowSearchSuggestions(false)
+                            }}
+                          >
+                            <Search className="h-4 w-4 text-white/50" />
+                            <span>{item}</span>
+                          </motion.div>
+                        ))
+                      }
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </form>
+            </div>
+
+            <motion.div 
+              className="flex items-center gap-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+            >
+              <motion.button
+                onClick={toggleTheme}
+                className="p-2 text-white hover:text-amber-300 transition-colors"
+                whileHover={{ rotate: 15 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                {theme === "dark" ? (
+                  <Sun className="h-5 w-5" />
+                ) : (
+                  <Moon className="h-5 w-5" />
+                )}
+              </motion.button>
+
+              <motion.button
+                className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-full flex items-center gap-2 shadow-lg"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => window.open('https://wa.me/+18775933166?text=Hi%20I%20need%20help%20with%20my%20order', '_blank')}
+              >
+                <span>Contact Us</span>
+              </motion.button>
+            </motion.div>
           </div>
 
-          {/* Navigation - Right on desktop, dropdown on mobile */}
-          <div className="order-2 md:order-3 w-full md:w-auto">
-            <nav className={`${isMobileMenuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row items-center md:space-x-4 space-y-4 md:space-y-0 py-4 md:py-0 bg-[#2C3E50] w-full md:w-auto`}>
-              <button
-                onClick={() => scrollToSection("home")}
-                className="text-white hover:text-[#E67E22] transition-colors duration-300 font-medium"
-              >
-                Home
-              </button>              <a
-                href="/shop"
-                className="text-white hover:text-[#E67E22] transition-colors duration-300 font-medium"
-              >
-                Shop
-              </a>
-              <button
-                onClick={() => scrollToSection("cookies")}
-                className="text-[#BDC3C7] hover:text-[#E67E22] transition-colors duration-300 font-medium"
-              >
-                Cookies Policy
-              </button>
-              <button
-                onClick={() => scrollToSection("disclaimer")}
-                className="text-[#BDC3C7] hover:text-[#E67E22] transition-colors duration-300 font-medium"
-              >
-                Disclaimer
-              </button>
-              <button
-                onClick={() => scrollToSection("privacy")}
-                className="text-[#BDC3C7] hover:text-[#E67E22] transition-colors duration-300 font-medium"
-              >
-                Privacy policy
-              </button>
-              <button
-                onClick={() => scrollToSection("refund")}
-                className="text-[#BDC3C7] hover:text-[#E67E22] transition-colors duration-300 font-medium"
-              >
-                Refund and Cancellation
-              </button>
-              <button
-                onClick={() => scrollToSection("terms")}
-                className="text-[#BDC3C7] hover:text-[#E67E22] transition-colors duration-300 font-medium"
-              >
-                Terms & Conditions
-              </button>
-              <Button className="bg-[#E67E22] hover:bg-[#D35400] text-white px-4 py-2 rounded-md transition-colors duration-300 md:ml-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-lock mr-1"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                Login
-              </Button>
-            </nav>
-          </div>
+          <MobileMenu 
+            isMobileMenuOpen={isMobileMenuOpen}
+            scrollToSection={scrollToSection}
+            toggleTheme={toggleTheme}
+            theme={theme}
+          />
         </div>
       </header>
-
-      {/* Add box shadow to header */}      <style dangerouslySetInnerHTML={{
-        __html: `
-          header {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            font-family: 'Roboto', 'Montserrat', 'Open Sans', sans-serif;
-          }
-          @media screen and (max-width: 768px) {
-            header .container {
-              flex-direction: column;
-            }
-            header .search-bar,
-            header .order-2 {
-              width: 100%;
-              text-align: center;
-            }
-          }
-        `
-      }} />
     </>
-  );
-};
+  )
+}
 
-export default Header;
- 
+export default Header

@@ -105,7 +105,10 @@ const ProductPlans = () => {
                       ? "bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white"
                       : "bg-gray-900 hover:bg-gray-800 text-white"
                   }`}
-                  onClick={() => window.location.href = "https://wa.me/18775933166?text=Hello%2C%20I%20need%20assistance"}
+                  onClick={() => window.open(
+                    `https://wa.me/+18775933166?text=Hi%20I%20want%20to%20buy:%0A%0APlan:%20${encodeURIComponent(plan.name)}%0APrice:%20${plan.price}%0AFeatures:%20${encodeURIComponent(plan.features.join(', '))}%0A%0ACould%20you%20help%20me%20purchase%20this?`,
+                    '_blank'
+                  )}
                 >
                   Buy Now
                 </Button>
