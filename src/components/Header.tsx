@@ -4,7 +4,7 @@ import { AnnouncementBar } from "./header/AnnouncementBar"
 import { Navigation } from "./header/Navigation"
 import { SearchActions } from "./header/SearchActions"
 import { MobileMenu } from "./header/MobileMenu"
-import { ShoppingCart, Search, Phone, Moon, Sun } from "lucide-react"
+import { Search, Moon, Sun } from "lucide-react"
 import { useCart } from "@/contexts/CartContext"
 import { motion, AnimatePresence } from "framer-motion"
 import { useTheme } from "next-themes"
@@ -16,6 +16,7 @@ const Header = () => {
   const [showSearchSuggestions, setShowSearchSuggestions] = useState(false)
   const { cartItems = [] } = useCart()
   const { theme, setTheme } = useTheme()
+
   useEffect(() => {
     setTheme('light') // Set light theme as default
   }, [])
@@ -69,13 +70,11 @@ const Header = () => {
     <>
       <AnnouncementBar />
 
-      {/* Main Header */}
       <header className={cn(
         "sticky top-0 w-full z-50 bg-gray-900 backdrop-blur-lg border-b border-gray-700 shadow-xl"
       )}>
         <div className="w-full px-4 py-3">
           <div className="flex items-center justify-between gap-6">
-            {/* Logo */}
             <motion.div 
               className="flex-shrink-0 flex items-center gap-3"
               initial={{ opacity: 0, x: -20 }}
@@ -172,7 +171,6 @@ const Header = () => {
               </form>
             </div>
 
-            {/* User Actions */}
             <motion.div 
               className="flex items-center gap-4"
               initial={{ opacity: 0 }}
@@ -192,14 +190,14 @@ const Header = () => {
                 )}
               </motion.button>
 
-            <motion.button
-              className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-full flex items-center gap-2 shadow-lg"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => window.open('https://wa.me/+18775933166?text=Hi%20I%20need%20help%20with%20my%20order', '_blank')}
-            >
-              <span>Contact Us</span>
-            </motion.button>
+              <motion.button
+                className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-full flex items-center gap-2 shadow-lg"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => window.open('https://wa.me/+18775933166?text=Hi%20I%20need%20help%20with%20my%20order', '_blank')}
+              >
+                <span>Contact Us</span>
+              </motion.button>
             </motion.div>
           </div>
 
