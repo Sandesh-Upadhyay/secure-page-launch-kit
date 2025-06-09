@@ -5,6 +5,8 @@ import { useTheme } from "next-themes"
 
 const Footer = () => {
   const { theme } = useTheme()
+  
+  const currentYear = new Date().getFullYear()
 
   const socialLinks = [
     {
@@ -55,33 +57,19 @@ const Footer = () => {
   ]
 
   return (
-    <motion.footer 
+    <footer 
       id="support"
       className="bg-white/5 backdrop-blur-lg border-t border-white/10 py-16"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
     >
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           {/* Brand Info */}
-          <motion.div 
-            className="col-span-1 md:col-span-2"
-            initial={{ y: 20 }}
-            whileInView={{ y: 0 }}
-            transition={{ delay: 0.1 }}
-            viewport={{ once: true }}
-          >
+          <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-3 mb-6">
               <Shield className="h-8 w-8 text-blue-400" />
-<<<<<<< HEAD
-              <span className="text-2xl font-bold">AVSafe Solutions</span>
-=======
               <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-400">
                 AVSafe Solutions
               </span>
->>>>>>> 4cfad300c9826dc2b58893bee00e1381ce72cb43
             </div>
             <p className="text-white/80 mb-6 max-w-md">
               Leading provider of comprehensive cybersecurity solutions. 
@@ -101,13 +89,7 @@ const Footer = () => {
             </div>
 
             {/* Social Links */}
-            <motion.div 
-              className="flex gap-4"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              viewport={{ once: true }}
-            >
+            <div className="flex gap-4">
               {socialLinks.map((social) => (
                 <motion.a
                   key={social.name}
@@ -121,95 +103,71 @@ const Footer = () => {
                   {social.icon}
                 </motion.a>
               ))}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Footer Links */}
-          <motion.div
-            initial={{ y: 20 }}
-            whileInView={{ y: 0 }}
-            transition={{ delay: 0.2 }}
-            viewport={{ once: true }}
-          >
+          <div>
             <h3 className="text-lg font-semibold text-white mb-4">Products</h3>
             <ul className="space-y-3">
               {productLinks.map((link) => (
-                <motion.li
-                  key={link.name}
-                  whileHover={{ x: 5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <a href={link.url} className="text-white/80 hover:text-white transition-colors">
+                <li key={link.name}>
+                  <motion.a 
+                    href={link.url} 
+                    className="text-white/80 hover:text-white transition-colors"
+                    whileHover={{ x: 5 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
                     {link.name}
-                  </a>
-                </motion.li>
+                  </motion.a>
+                </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ y: 20 }}
-            whileInView={{ y: 0 }}
-            transition={{ delay: 0.3 }}
-            viewport={{ once: true }}
-          >
+          <div>
             <h3 className="text-lg font-semibold text-white mb-4">Support</h3>
             <ul className="space-y-3">
               {supportLinks.map((link) => (
-                <motion.li
-                  key={link.name}
-                  whileHover={{ x: 5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <a href={link.url} className="text-white/80 hover:text-white transition-colors">
+                <li key={link.name}>
+                  <motion.a 
+                    href={link.url} 
+                    className="text-white/80 hover:text-white transition-colors"
+                    whileHover={{ x: 5 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
                     {link.name}
-                  </a>
-                </motion.li>
+                  </motion.a>
+                </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ y: 20 }}
-            whileInView={{ y: 0 }}
-            transition={{ delay: 0.4 }}
-            viewport={{ once: true }}
-          >
+          <div>
             <h3 className="text-lg font-semibold text-white mb-4">Company</h3>
             <ul className="space-y-3">
               {companyLinks.map((link) => (
-                <motion.li
-                  key={link.name}
-                  whileHover={{ x: 5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <a href={link.url} className="text-white/80 hover:text-white transition-colors">
+                <li key={link.name}>
+                  <motion.a 
+                    href={link.url} 
+                    className="text-white/80 hover:text-white transition-colors"
+                    whileHover={{ x: 5 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
                     {link.name}
-                  </a>
-                </motion.li>
+                  </motion.a>
+                </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
         </div>
 
-        <motion.div 
-          className="border-t border-white/10 pt-8"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          viewport={{ once: true }}
-        >
+        <div className="border-t border-white/10 pt-8">
           <div className="flex flex-col space-y-6">
             <PaymentBanner />
-<<<<<<< HEAD
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <div className="text-gray-300 mb-4 md:mb-0">
-                © 2025 AVSafe Solutions. All rights reserved.
-=======
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <div className="text-white/70">
-                © {new Date().getFullYear()} AVSafe Solutions. All rights reserved.
->>>>>>> 4cfad300c9826dc2b58893bee00e1381ce72cb43
+                © {currentYear} AVSafe Solutions. All rights reserved.
               </div>
               <div className="flex flex-wrap gap-4 md:gap-6">
                 <a href="#" className="text-white/70 hover:text-white transition-colors">
@@ -224,9 +182,9 @@ const Footer = () => {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
-    </motion.footer>
+    </footer>
   )
 }
 
