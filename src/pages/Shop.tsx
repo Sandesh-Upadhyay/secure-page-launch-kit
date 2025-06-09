@@ -6,6 +6,7 @@ import ProductPlans from "../components/ProductPlans";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/contexts/CartContext";
 import { useAuth } from "@/contexts/AuthContext";
+import { useState } from "react";
 
 interface Product {
   id: string;
@@ -20,7 +21,11 @@ interface Product {
 const Shop = () => {
   const { addItem } = useCart();
   const { isAuthenticated } = useAuth();
-  const products: Product[] = [
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 12; // Changed from 4 to 12
+
+  const allProducts: Product[] = [
+    // Page 1 Products
     {
       id: "avast-premium",
       name: "Avast Premium Security",
@@ -81,7 +86,171 @@ const Shop = () => {
         "File Shredder",
       ],
     },
+    // Page 2 Products
+    {
+      id: "norton-internet-security-2",
+      name: "Norton Internet Security",
+      subtitle: "Advanced Protection for 5 Devices",
+      price: 49.99,
+      originalPrice: 99.99,
+      image: "/norton-internet-security.png",
+      features: [
+        "Advanced Threat Protection",
+        "Smart Firewall",
+        "Password Manager",
+        "File Shield",
+        "Multi-device Support",
+      ],
+    },
+    {
+      id: "trend-micro-titanium-1",
+      name: "Trend Micro Titanium Security",
+      subtitle: "Complete Protection Suite",
+      price: 39.99,
+      originalPrice: 79.99,
+      image: "/trend-micro-titanium.png",
+      features: [
+        "Real-time Protection",
+        "Ransomware Protection",
+        "Banking Protection",
+        "Password Manager",
+        "Web Protection",
+      ],
+    },
+    {
+      id: "webroot-security-plus",
+      name: "Webroot Security Plus",
+      subtitle: "3 Devices, 1 Year",
+      price: 34.99,
+      originalPrice: 69.99,
+      image: "/webroot-security-plus.png",
+      features: [
+        "Advanced Cyber Protection",
+        "Cloud-Based Security",
+        "Secure Online Banking",
+        "Password Manager",
+        "Multi-device Support",
+      ],
+    },
+    {
+      id: "webroot-complete",
+      name: "Webroot Security Complete",
+      subtitle: "Ultimate Protection Package",
+      price: 44.99,
+      originalPrice: 89.99,
+      image: "/webroot-complete.png",
+      features: [
+        "Advanced Threat Protection",
+        "Ransomware Shield",
+        "Mobile Security",
+        "Password Manager",
+        "System Optimizer",
+      ],
+    },
+    {
+      id: "trend-micro-maximum",
+      name: "Trend Micro Maximum Security",
+      subtitle: "Ultimate Digital Protection",
+      price: 49.99,
+      originalPrice: 99.99,
+      image: "/trend-micro-maximum.png",
+      features: [
+        "Advanced AI Protection",
+        "Privacy Scanner",
+        "Password Manager",
+        "Mobile Security",
+        "Pay Guard Browser",
+      ],
+    },
+    {
+      id: "webroot-antivirus",
+      name: "Webroot Antivirus",
+      subtitle: "Essential Protection",
+      price: 29.99,
+      originalPrice: 59.99,
+      image: "/webroot-antivirus.png",
+      features: [
+        "Real-time Protection",
+        "Lightweight Solution",
+        "Fast Scanning",
+        "Web Protection",
+        "Anti-phishing",
+      ],
+    },
+
+    // Page 3 Products
+    {
+      id: "norton-360-deluxe-1",
+      name: "Norton 360 Deluxe",
+      subtitle: "3-Year Protection",
+      price: 79.99,
+      originalPrice: 149.99,
+      image: "/norton-360-deluxe.png",
+      features: [
+        "Device Security",
+        "Online Privacy",
+        "Smart Firewall",
+        "Password Manager",
+        "Cloud Backup",
+      ],
+    },
+    {
+      id: "trend-micro-titanium-2",
+      name: "Trend Micro Titanium Security",
+      subtitle: "Advanced Protection",
+      price: 75.0,
+      originalPrice: 149.99,
+      image: "/trend-micro-titanium.png",
+      features: [
+        "Advanced AI Protection",
+        "Privacy Scanner",
+        "Password Manager",
+        "Mobile Security",
+        "Pay Guard Browser",
+      ],
+    },
+    {
+      id: "mcafee-internet-security",
+      name: "McAfee Internet Security",
+      subtitle: "Multi-Device Protection",
+      price: 44.99,
+      originalPrice: 89.99,
+      image: "/mcafee-internet-security.png",
+      features: [
+        "Award-winning Protection",
+        "Safe Web Browsing",
+        "Multi-device Support",
+        "Password Manager",
+        "File Protection",
+      ],
+    },
+    {
+      id: "mcafee-livesafe",
+      name: "McAfee LiveSafe",
+      subtitle: "Ultimate Protection",
+      price: 54.99,
+      originalPrice: 119.99,
+      image: "/mcafee-livesafe.png",
+      features: [
+        "Ultimate Device Protection",
+        "Identity Monitoring",
+        "Secure VPN",
+        "Password Manager",
+        "File Encryption",
+      ],
+    },
   ];
+
+  // Pagination logic
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = allProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+  const totalPages = Math.ceil(allProducts.length / productsPerPage);
+
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const handleAddToCart = (product: Product) => {
     addItem({
@@ -108,10 +277,11 @@ const Shop = () => {
         </div>
       </section>
 
-      <section className="py-12 bg-gray-50">
+      {/* Single products section with pagination */}
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {products.map((product, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {currentProducts.map((product, index) => (
               <div
                 key={index}
                 className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
@@ -167,7 +337,7 @@ const Shop = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button 
+                  <Button
                     className="w-full bg-[#E67E22] hover:bg-[#D35400] text-white"
                     onClick={() => handleAddToCart(product)}
                   >
@@ -176,6 +346,33 @@ const Shop = () => {
                 </div>
               </div>
             ))}
+          </div>
+          
+          {/* Pagination controls */}
+          <div className="flex justify-center mt-8">
+            <div className="flex gap-4">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+                <button
+                  key={pageNum}
+                  className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                    pageNum === currentPage
+                      ? 'bg-black text-white'
+                      : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
+                  }`}
+                  onClick={() => handlePageChange(pageNum)}
+                >
+                  {pageNum}
+                </button>
+              ))}
+              {currentPage < totalPages && (
+                <button
+                  className="w-10 h-10 bg-gray-100 text-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-200"
+                  onClick={() => handlePageChange(currentPage + 1)}
+                >
+                  →
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </section>
