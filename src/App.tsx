@@ -12,6 +12,7 @@ import { AuthProvider } from '@/contexts/AuthContext';
 import LoginForm from "@/components/LoginForm";
 import Dashboard from "@/pages/Dashboard";
 import Register from "@/pages/Register";
+import FloatingWhatsAppButton from "@/components/FloatingWhatsAppButton";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,8 @@ const App = () => (
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
+            {/* Persistent WhatsApp Button */}
+            <FloatingWhatsAppButton />
           </CartProvider>
         </AuthProvider>
       </TooltipProvider>
