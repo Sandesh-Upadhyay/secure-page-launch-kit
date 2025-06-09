@@ -55,12 +55,11 @@ const Header = () => {
         className={`w-full z-50 transition-all duration-300 bg-[#2C3E50] ${isScrolled ? 'shadow-md' : ''}`}
       >
         <div className="container mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-4">
-          {/* Logo - Left on desktop, centered on mobile */}
-          <div className="flex items-center justify-center md:justify-start w-full md:w-auto mb-4 md:mb-0">
-            <img 
-              src="/nortonlogo.jpg" 
-              alt="Norton" 
-              className="h-10 rounded-sm" 
+          {/* Logo - Left on desktop, centered on mobile */}          <div className="flex items-center justify-center md:justify-start w-full md:w-auto mb-4 md:mb-0">
+            <img
+              src="/cropped-cropped-NortonFull-1.jpg"
+              alt="Norton"
+              className="h-10 object-contain"
             />
           </div>
 
@@ -142,25 +141,27 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Add box shadow to header */}
-      <style jsx>{`
-        header {
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          font-family: 'Roboto', 'Montserrat', 'Open Sans', sans-serif;
-        }
-        @media screen and (max-width: 768px) {
-          header .container {
-            flex-direction: column;
+      {/* Add box shadow to header */}      <style dangerouslySetInnerHTML={{
+        __html: `
+          header {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-family: 'Roboto', 'Montserrat', 'Open Sans', sans-serif;
           }
-          header .search-bar,
-          header .order-2 {
-            width: 100%;
-            text-align: center;
+          @media screen and (max-width: 768px) {
+            header .container {
+              flex-direction: column;
+            }
+            header .search-bar,
+            header .order-2 {
+              width: 100%;
+              text-align: center;
+            }
           }
-        }
-      `}</style>
+        `
+      }} />
     </>
   );
 };
 
 export default Header;
+ 
