@@ -14,8 +14,12 @@ export const Navigation = ({ scrollToSection }: NavigationProps) => {
   return (
     <nav className="hidden lg:flex items-center space-x-8 flex-1 justify-center">
       <button
-        onClick={() => scrollToSection("home")}
-        className="text-white hover:text-orange-400 transition-colors duration-300"
+        onClick={(e) => {
+          e.preventDefault()
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+          window.location.href = '/'
+        }}
+        className="text-white hover:text-orange-400 transition-colors duration-300 cursor-pointer"
       >
         Home
       </button>

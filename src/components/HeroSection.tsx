@@ -1,9 +1,9 @@
 import { useCart } from "@/contexts/CartContext"
 import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion"
 
 const HeroSection = () => {
   const { addItem } = useCart()
-
   const products = [
     {
       id: 'essential-security',
@@ -59,28 +59,47 @@ const HeroSection = () => {
           </p>
           <div className="flex flex-col items-center gap-6">
             <div className="flex gap-4">
-              <Button className="px-8 py-4 text-xl font-medium rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-md pulse-button">
-                Explore Products
+              <Button 
+                className="px-8 py-4 text-xl font-medium rounded-full bg-green-600 hover:bg-green-700 text-white shadow-lg pulse-button"
+                onClick={() => window.open('https://wa.me/18775933166?text=Hi%20I%20want%20to%20explore%20your%20products', '_blank')}
+              >
+                Chat on WhatsApp
               </Button>
-              <Button variant="outline" className="px-8 py-4 text-xl font-medium rounded-full border-blue-600 text-blue-600 hover:bg-blue-50">
+              <Button 
+                variant="outline" 
+                className="px-8 py-4 text-xl font-medium rounded-full border-green-600 text-green-600 hover:bg-green-50"
+                onClick={() => window.open('https://wa.me/18775933166?text=Hi%20I%20want%20a%20free%20trial', '_blank')}
+              >
                 Free Trial
               </Button>
             </div>
-            
+                        
             {/* Email capture form */}
-            <div className="w-full max-w-md bg-white rounded-full p-1 shadow-md">
-              <div className="flex">
-                <input 
-                  type="email" 
-                  placeholder="Enter your email" 
-                  className="flex-1 bg-transparent text-gray-800 placeholder-gray-500 px-6 py-4 text-lg focus:outline-none"
+            <motion.div 
+              className="w-full max-w-md"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
+              <div className="relative flex items-center">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="flex-1 bg-white/90 text-gray-800 placeholder-gray-500 px-6 py-4 text-lg rounded-l-full focus:outline-none focus:ring-2 focus:ring-green-500/30 border-r-0 border border-gray-200 shadow-sm"
                 />
-                <Button className="px-8 py-4 text-lg rounded-r-full bg-blue-600 hover:bg-blue-700">
-                  Get Started
+                <Button
+                  className="px-8 py-4 text-lg rounded-r-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white shadow-lg hover:shadow-xl transition-all"
+                  onClick={() => window.open('https://wa.me/18775933166?text=Hi%20I%20want%20to%20get%20started', '_blank')}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Chat Now
                 </Button>
               </div>
-            </div>
-
+              <p className="text-sm text-gray-600 mt-2 text-center">
+                We'll contact you via WhatsApp
+              </p>
+            </motion.div>
             {/* Trust badge */}
             <div className="text-gray-700 text-lg flex items-center gap-2">
               <svg className="w-6 h-6 text-green-500 floating-badge" fill="currentColor" viewBox="0 0 20 20">
@@ -90,10 +109,8 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
-
         {/* Add animation styles */}
         <style jsx="true">{`
-
           .fade-in-text span {
             display: inline-block;
             opacity: 0;
@@ -132,7 +149,6 @@ const HeroSection = () => {
             100% { transform: scale(1); }
           }
         `}</style>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
           {products.map((product) => (
             <div
@@ -160,8 +176,8 @@ const HeroSection = () => {
                 </span>
               </div>
               <Button
-                onClick={() => window.open(`https://wa.me/18775933166?text=Hi%20I%20want%20to%20buy%20${encodeURIComponent(product.name)}`, '_blank')}
-                className="w-full bg-blue-600 text-white hover:bg-blue-700 text-lg py-3"
+                onClick={() => window.open(`https://wa.me/18775933166?text=Hi%20I%20want%20to%20buy%20${encodeURIComponent(product.name)}%20for%20$${product.salePrice}`, '_blank')}
+                className="w-full bg-green-600 hover:bg-green-700 text-white text-lg py-3 shadow-md"
               >
                 Buy Now
               </Button>
@@ -176,13 +192,12 @@ const HeroSection = () => {
             </div>
           ))}
         </div>
-
         {/* Additional CTA */}
         <div className="mt-12 text-center">
               <Button 
-                variant="outline" 
-                className="px-8 py-6 text-xl font-medium rounded-full border-2 border-blue-600 text-blue-600 hover:bg-blue-50"
-                onClick={() => window.open('https://wa.me/18775933166?text=Hi%20I%20want%20to%20compare%20products', '_blank')}
+                variant="outline"
+                className="px-8 py-6 text-xl font-medium rounded-full border-2 border-green-600 text-green-600 hover:bg-green-50 bg-white/10 backdrop-blur-lg shadow-lg"
+                onClick={() => window.open('https://wa.me/18775933166?text=Hi%20I%20have%20questions%20about%20your%20products', '_blank')}
               >
                 Contact Us
               </Button>

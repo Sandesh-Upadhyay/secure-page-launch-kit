@@ -1,4 +1,5 @@
-import type { Config } from "tailwindcss";
+import { type Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
 
 const config = {
 	darkMode: ["class"],
@@ -23,8 +24,18 @@ const config = {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
-					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					DEFAULT: "#0066CC",
+					foreground: "hsl(var(--primary-foreground))",
+					50: "#E6F0FF",
+					100: "#CCE1FF", 
+					200: "#99C3FF",
+					300: "#66A5FF",
+					400: "#3387FF",
+					500: "#0066CC",
+					600: "#0052A3",
+					700: "#003D7A",
+					800: "#002952",
+					900: "#001429"
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -65,6 +76,9 @@ const config = {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			fontFamily: {
+				sans: ["var(--font-sans)", ...fontFamily.sans],
 			},
 			keyframes: {
 				'accordion-down': {
