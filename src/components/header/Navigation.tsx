@@ -25,33 +25,32 @@ export const Navigation = ({ scrollToSection }: NavigationProps) => {
       </button>
 
       {/* Shop Dropdown */}
-      <DropdownMenu>
-        <DropdownMenuTrigger className="flex items-center space-x-1 text-white hover:text-orange-400 transition-colors duration-300">
-          <span>Shop</span>
-          <ChevronDown className="h-4 w-4 ml-1" />
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className="bg-slate-800 border-slate-700 p-2">
-          <DropdownMenuItem className="text-white hover:bg-slate-700 hover:text-orange-400">
-            Antivirus
-          </DropdownMenuItem>
-          <DropdownMenuItem className="text-white hover:bg-slate-700 hover:text-orange-400">
-            Internet Security
-          </DropdownMenuItem>
-          <DropdownMenuItem className="text-white hover:bg-slate-700 hover:text-orange-400">
-            VPN Services
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+      <button
+        onClick={() => scrollToSection('products')}
+        className="text-white hover:text-orange-400 transition-colors duration-300 cursor-pointer text-lg font-semibold"
+        style={{ minWidth: 80 }}
+      >
+        Shop
+      </button>
 
       {/* Deals with sparkle icon */}
-      <a href="/deals" className="flex items-center space-x-2 text-white hover:text-orange-400 transition-colors duration-300 group">
+      <button
+        onClick={() => scrollToSection('products')}
+        className="flex items-center space-x-2 text-white hover:text-orange-400 transition-colors duration-300 group text-lg font-semibold"
+        style={{ minWidth: 80 }}
+      >
         <span>Deals</span>
         <Sparkles className="h-4 w-4 text-yellow-400 group-hover:text-yellow-300" />
-      </a>
+      </button>
 
-      <a href="/contact" className="text-white hover:text-orange-400 transition-colors duration-300">
+      <button
+        onClick={() => window.open('https://wa.me/18775933166?text=Hi%20I%20need%20help%20with%20my%20order', '_blank')}
+        className="text-white hover:text-green-500 transition-colors duration-300 bg-green-600 hover:bg-green-700 rounded-full px-5 py-2 ml-2 text-lg font-semibold shadow-md"
+        style={{ minWidth: 80 }}
+        aria-label="Contact on WhatsApp"
+      >
         Contact
-      </a>
+      </button>
       
       {/* Policies Dropdown */}
       <DropdownMenu>

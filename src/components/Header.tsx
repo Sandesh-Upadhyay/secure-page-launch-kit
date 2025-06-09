@@ -4,18 +4,21 @@ import { AnnouncementBar } from "./header/AnnouncementBar"
 import { Navigation } from "./header/Navigation"
 import { SearchActions } from "./header/SearchActions"
 import { MobileMenu } from "./header/MobileMenu"
-import { Search, Moon, Sun } from "lucide-react"
+import { Search, Moon, Sun, Loader2 } from "lucide-react"
 import { useCart } from "@/contexts/CartContext"
 import { motion, AnimatePresence } from "framer-motion"
 import { useTheme } from "next-themes"
+import { useLocation, useSearchParams, Link, useNavigate } from 'react-router-dom'
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
   const [showSearchSuggestions, setShowSearchSuggestions] = useState(false)
+  const [isSearching, setIsSearching] = useState(false)
   const { cartItems = [] } = useCart()
   const { theme, setTheme } = useTheme()
+  const navigate = useNavigate();
 
   useEffect(() => {
     setTheme('light') // Set light theme as default
@@ -49,12 +52,24 @@ const Header = () => {
     setTheme(theme === "dark" ? "light" : "dark")
   }
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (searchQuery.trim()) {
-      window.open(`/search?q=${encodeURIComponent(searchQuery.trim())}`, '_blank')
-      setSearchQuery("")
+    const trimmedQuery = searchQuery.trim()
+    
+    if (!trimmedQuery) return
+    
+    try {
+      setIsSearching(true)
       setShowSearchSuggestions(false)
+      
+      // Use React Router navigation
+      navigate(`/search?q=${encodeURIComponent(trimmedQuery)}`)
+      
+      setSearchQuery("")
+    } catch (error) {
+      console.error('Search error:', error)
+    } finally {
+      setIsSearching(false)
     }
   }
 
@@ -71,15 +86,16 @@ const Header = () => {
       <AnnouncementBar />
 
       <header className={cn(
-        "sticky top-0 w-full z-50 bg-gray-900 backdrop-blur-lg border-b border-gray-700 shadow-xl"
+        "sticky top-0 w-full z-50 bg-gradient-to-r from-gray-900/95 via-gray-800/95 to-gray-900/95 backdrop-blur-xl border-b border-gray-700/50 shadow-[0_4px_20px_-3px_rgba(0,0,0,0.5)] transition-all duration-300"
       )}>
         <div className="w-full px-4 py-3">
           <div className="flex items-center justify-between gap-6">
             <motion.div 
-              className="flex-shrink-0 flex items-center gap-3"
+              className="flex-shrink-0 flex items-center gap-3 transform perspective-1000 transition-transform duration-300"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
+              whileHover={{ scale: 1.02, rotateY: 5 }}
             >
               <motion.a
                 href="#"
@@ -102,7 +118,7 @@ const Header = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
               >
-                <span className="text-white font-bold text-lg hidden md:block bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-teal-300">
+                <span className="font-sans text-white font-bold text-lg hidden md:block bg-clip-text text-transparent bg-gradient-to-r from-gray-100 via-blue-400 to-gray-100 animate-gradient-x">
                   AV Safe Solutions
                 </span>
               </motion.div>
@@ -128,27 +144,40 @@ const Header = () => {
                     onFocus={() => setShowSearchSuggestions(true)}
                     onBlur={() => setTimeout(() => setShowSearchSuggestions(false), 200)}
                     placeholder="Search products..."
-                    className="w-full py-2 px-4 pr-10 rounded-full bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 border border-white/20"
+                    className="w-full py-2 px-4 pr-10 rounded-full bg-gray-800/50 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/50 border border-gray-700/50 transition-all duration-300 shadow-[0_0_15px_-3px_rgba(0,0,0,0.3)] hover:shadow-[0_0_25px_-3px_rgba(0,0,0,0.5)] font-sans"
                   />
-                  <button
+                  <motion.button
                     type="submit"
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors"
+                    disabled={isSearching || !searchQuery.trim()}
+                    className={cn(
+                      "absolute right-3 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors",
+                      "disabled:opacity-50 disabled:cursor-not-allowed",
+                      "focus:outline-none focus:ring-2 focus:ring-cyan-400/50",
+                      "rounded-full p-1"
+                    )}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <Search className="h-5 w-5" />
-                  </button>
+                    {isSearching ? (
+                      <Loader2 className="h-5 w-5 animate-spin" />
+                    ) : (
+                      <Search className="h-5 w-5" />
+                    )}
+                  </motion.button>
                 </motion.div>
 
                 <AnimatePresence>
                   {showSearchSuggestions && searchQuery && (
                     <motion.div
-                      className="absolute top-full left-0 right-0 mt-2 bg-white/5 backdrop-blur-lg rounded-xl shadow-xl border border-white/10 overflow-hidden"
+                      className="absolute top-full left-0 right-0 mt-2 bg-gray-900/90 backdrop-blur-xl rounded-xl shadow-[0_5px_25px_-5px_rgba(0,0,0,0.4)] border border-gray-700/30 overflow-hidden font-sans"
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.2 }}
                     >
                       {popularSearches
-                        .filter(item => item.toLowerCase().includes(searchQuery.toLowerCase()))
+                        .filter(item => 
+                          item.toLowerCase().includes(searchQuery.toLowerCase()))
                         .map((item, index) => (
                           <motion.div
                             key={index}
@@ -157,14 +186,21 @@ const Header = () => {
                             transition={{ type: "spring", stiffness: 300 }}
                             onClick={() => {
                               setSearchQuery(item)
-                              setShowSearchSuggestions(false)
+                              handleSearch(new Event('submit') as any)
                             }}
                           >
                             <Search className="h-4 w-4 text-white/50" />
                             <span>{item}</span>
                           </motion.div>
-                        ))
-                      }
+                        ))}
+                      {popularSearches
+                        .filter(item => 
+                          item.toLowerCase().includes(searchQuery.toLowerCase()))
+                        .length === 0 && (
+                        <div className="px-4 py-3 text-white/50 text-sm">
+                          No suggestions found
+                        </div>
+                      )}
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -179,9 +215,10 @@ const Header = () => {
             >
               <motion.button
                 onClick={toggleTheme}
-                className="p-2 text-white hover:text-amber-300 transition-colors"
-                whileHover={{ rotate: 15 }}
+                className="p-2 rounded-full bg-gray-800/30 text-gray-300 hover:text-blue-400 hover:bg-gray-700/40 transition-all duration-300 border border-gray-700/50 backdrop-blur-sm"
+                whileHover={{ rotate: 180, scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
+                transition={{ duration: 0.3 }}
               >
                 {theme === "dark" ? (
                   <Sun className="h-5 w-5" />
@@ -191,7 +228,7 @@ const Header = () => {
               </motion.button>
 
               <motion.button
-                className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-full flex items-center gap-2 shadow-lg"
+                className="px-4 py-2 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 text-gray-100 rounded-full flex items-center gap-2 shadow-[0_0_20px_-5px_rgba(0,0,0,0.5)] transition-all duration-300 font-medium font-sans"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => window.open('https://wa.me/+18775933166?text=Hi%20I%20need%20help%20with%20my%20order', '_blank')}
