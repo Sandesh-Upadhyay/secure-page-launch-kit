@@ -1,7 +1,6 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Star } from "lucide-react";
+import { Shield, Check, Star } from "lucide-react";
 
 const ProductPlans = () => {
   const plans = [
@@ -68,8 +67,8 @@ const ProductPlans = () => {
               key={plan.name} 
               className={`relative transform hover:scale-105 transition-all duration-300 ${
                 plan.popular 
-                  ? "border-blue-500 shadow-2xl ring-2 ring-blue-500 ring-opacity-50" 
-                  : "border-gray-200 shadow-lg hover:shadow-xl"
+                  ? "border-blue-500 shadow-2xl ring-2 ring-blue-500 ring-opacity-50 bg-gradient-to-b from-white to-blue-50" 
+                  : "border-gray-200 shadow-lg hover:shadow-xl bg-gradient-to-b from-white to-gray-50"
               }`}
             >
               {plan.popular && (
@@ -82,10 +81,13 @@ const ProductPlans = () => {
               )}
               
               <CardHeader className="text-center pb-8">
-                <CardTitle className="text-2xl font-bold text-gray-900">{plan.name}</CardTitle>
+                <div className="flex justify-center mb-6">
+                  <Shield className={`w-12 h-12 ${plan.popular ? 'text-blue-600' : 'text-gray-600'}`} />
+                </div>
+                <CardTitle className="text-3xl font-bold text-gray-900 mb-2">{plan.name}</CardTitle>
                 <div className="mt-4">
-                  <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
-                  <span className="text-gray-600">{plan.period}</span>
+                  <span className="text-5xl font-bold text-gray-900">{plan.price}</span>
+                  <span className="text-xl text-gray-600">{plan.period}</span>
                 </div>
               </CardHeader>
               
@@ -100,10 +102,10 @@ const ProductPlans = () => {
                 </ul>
                 
                 <Button 
-                  className={`w-full py-3 text-lg font-semibold rounded-lg transition-all duration-200 ${
+                  className={`w-full py-6 text-xl font-semibold rounded-xl transition-all duration-300 ${
                     plan.popular
-                      ? "bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white"
-                      : "bg-gray-900 hover:bg-gray-800 text-white"
+                      ? "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl"
+                      : "bg-gray-800 hover:bg-gray-900 text-white shadow-md hover:shadow-lg"
                   }`}
                   onClick={() => window.open(
                     `https://wa.me/+18775933166?text=Hi%20I%20want%20to%20buy:%0A%0APlan:%20${encodeURIComponent(plan.name)}%0APrice:%20${plan.price}%0AFeatures:%20${encodeURIComponent(plan.features.join(', '))}%0A%0ACould%20you%20help%20me%20purchase%20this?`,
@@ -117,10 +119,22 @@ const ProductPlans = () => {
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <p className="text-gray-600">
-            All plans include 30-day free trial • No credit card required • Cancel anytime
-          </p>
+        <div className="text-center mt-16">
+          <p className="text-xl text-gray-700 mb-4">All plans include:</p>
+          <div className="flex flex-wrap justify-center gap-8">
+            <div className="flex items-center space-x-2">
+              <Check className="h-6 w-6 text-green-500" />
+              <span className="text-lg text-gray-700">30-day free trial</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Check className="h-6 w-6 text-green-500" />
+              <span className="text-lg text-gray-700">No credit card required</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Check className="h-6 w-6 text-green-500" />
+              <span className="text-lg text-gray-700">Cancel anytime</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
