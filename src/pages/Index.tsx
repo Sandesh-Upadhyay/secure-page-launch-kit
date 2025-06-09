@@ -34,7 +34,7 @@ const sectionVariants = {
 const Index = () => {
   return (
     <motion.main 
-      className="relative min-h-screen"
+      className="relative min-h-screen bg-gray-900"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
