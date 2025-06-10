@@ -1,11 +1,9 @@
 import { Shield, Facebook, Twitter, Linkedin, Instagram, Mail, Phone } from "lucide-react"
 import { motion } from "framer-motion"
-import PaymentBanner from "./PaymentBanner"
 import { useTheme } from "next-themes"
 
 const Footer = () => {
   const { theme } = useTheme()
-  
   const currentYear = new Date().getFullYear()
 
   const socialLinks = [
@@ -35,59 +33,126 @@ const Footer = () => {
     }
   ]
 
-  const productLinks = [
-    { name: "Antivirus Basic", url: "#" },
-    { name: "Antivirus Pro", url: "#" },
-    { name: "Premium Suite", url: "#" },
-    { name: "Business Solutions", url: "#" }
-  ]
-
-  const supportLinks = [
-    { name: "Help Center", url: "#" },
-    { name: "Contact Support", url: "#" },
-    { name: "Download Center", url: "#" },
-    { name: "System Requirements", url: "#" }
-  ]
-
-  const companyLinks = [
-    { name: "About Us", url: "#" },
-    { name: "Careers", url: "#" },
-    { name: "Press", url: "#" },
-    { name: "Blog", url: "#" }
-  ]
-
   return (
-    <footer 
-      id="support"
-      className="bg-white/5 backdrop-blur-lg border-t border-white/10 py-16"
-    >
+    <footer className="bg-white py-16 border-t">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          {/* Brand Info */}
-          <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center gap-3 mb-6">
-              <Shield className="h-8 w-8 text-blue-400" />
-              <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-400">
-                AVSafe Solutions
-              </span>
-            </div>
-            <p className="text-white/80 mb-6 max-w-md">
-              Leading provider of comprehensive cybersecurity solutions. 
-              Protecting millions of users worldwide with cutting-edge technology.
-            </p>
-            
-            {/* Contact Info */}
-            <div className="space-y-3 mb-8">
-              <div className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
-                <Mail className="h-5 w-5 text-blue-400" />
-                <span>support@avsafe.com</span>
-              </div>
-              <div className="flex items-center gap-3 text-white/80 hover:text-white transition-colors">
-                <Phone className="h-5 w-5 text-blue-400" />
-                <span>+1 (877) 593-3166</span>
-              </div>
-            </div>
+        {/* SSL Secure Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <div className="flex items-center gap-4">
+            <img src="/SSL Secure image.jpg" alt="SSL Secure" className="h-16 object-contain" />
+            <img src="/HTTPS Secure.jpg" alt="HTTPS Secure" className="h-16 object-contain" />
+            <img src="/Norton Authorized Reseller.jpg" alt="Norton Authorized Reseller" className="h-12 object-contain" />
+          </div>
+          <div className="flex flex-wrap items-center justify-end gap-4">
+            <img src="/American Express.jpg" alt="American Express" className="h-8 object-contain" />
+            <img src="/Master card image.jpg" alt="Mastercard" className="h-8 object-contain" />
+            <img src="/Visa Image.jpg" alt="Visa" className="h-8 object-contain" />
+            <img src="/paypal image.jpg" alt="PayPal" className="h-8 object-contain" />
+            <img src="/Apple Pay.jpg" alt="Apple Pay" className="h-8 object-contain" />
+          </div>
+        </div>
 
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          {/* Products */}
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Products</h3>
+            <ul className="space-y-3">
+              <li><a href="#" className="text-gray-600 hover:text-gray-900">Norton Security Standard</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-gray-900">Norton 360 Standard</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-gray-900">Norton 360 Deluxe</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-gray-900">Norton 360 Premium</a></li>
+            </ul>
+          </div>
+
+          {/* {Important Links} */}
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Important Links</h3>
+            <ul className="space-y-3">
+              {/* <li><a href="#" className="text-gray-600 hover:text-gray-900">Cart</a></li> */}
+              <li><a href="#" className="text-gray-600 hover:text-gray-900">Checkout</a></li>
+              {/* <li><a href="#" className="text-gray-600 hover:text-gray-900">My account</a></li> */}
+              <li><a href="#" className="text-gray-600 hover:text-gray-900">About US</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-gray-900">Shop</a></li>
+            </ul>
+          </div>
+
+          {/* Contact Us */}
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Contact US</h3>
+            <ul className="space-y-3">
+              <li className="flex items-center gap-2">
+                <Mail className="h-5 w-5 text-gray-600" />
+                <span className="text-gray-600">contact@AVSafe Solutions.com</span>
+              </li>
+              <li>
+                <span className="text-gray-600">Website: www.AVSafe Solutions</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Legal Links */}
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">Legal</h3>
+            <ul className="space-y-3">
+              <li>
+                <a 
+                  href="#cookies" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('privacy')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-gray-600 hover:text-gray-900 cursor-pointer"
+                >
+                  Cookies Policy
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#faq" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-gray-600 hover:text-gray-900 cursor-pointer"
+                >
+                  FAQ
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#terms" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('terms')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-gray-600 hover:text-gray-900 cursor-pointer"
+                >
+                  Disclaimer
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#privacy" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('privacy')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-gray-600 hover:text-gray-900 cursor-pointer"
+                >
+                  Privacy policy
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Footer Bottom */}
+        <div className="border-t border-gray-200 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="text-gray-600">
+              © {currentYear} AVSafe Solutions. All rights reserved.
+            </div>
             {/* Social Links */}
             <div className="flex gap-4">
               {socialLinks.map((social) => (
@@ -96,90 +161,13 @@ const Footer = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all ${social.color}`}
+                  className={`p-2 rounded-full hover:bg-gray-100 transition-all ${social.color}`}
                   whileHover={{ y: -3 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   {social.icon}
                 </motion.a>
               ))}
-            </div>
-          </div>
-
-          {/* Footer Links */}
-          <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Products</h3>
-            <ul className="space-y-3">
-              {productLinks.map((link) => (
-                <li key={link.name}>
-                  <motion.a 
-                    href={link.url} 
-                    className="text-white/80 hover:text-white transition-colors"
-                    whileHover={{ x: 5 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    {link.name}
-                  </motion.a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Support</h3>
-            <ul className="space-y-3">
-              {supportLinks.map((link) => (
-                <li key={link.name}>
-                  <motion.a 
-                    href={link.url} 
-                    className="text-white/80 hover:text-white transition-colors"
-                    whileHover={{ x: 5 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    {link.name}
-                  </motion.a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Company</h3>
-            <ul className="space-y-3">
-              {companyLinks.map((link) => (
-                <li key={link.name}>
-                  <motion.a 
-                    href={link.url} 
-                    className="text-white/80 hover:text-white transition-colors"
-                    whileHover={{ x: 5 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    {link.name}
-                  </motion.a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <div className="border-t border-white/10 pt-8">
-          <div className="flex flex-col space-y-6">
-            <PaymentBanner />
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <div className="text-white/70">
-                © {currentYear} AVSafe Solutions. All rights reserved.
-              </div>
-              <div className="flex flex-wrap gap-4 md:gap-6">
-                <a href="#" className="text-white/70 hover:text-white transition-colors">
-                  Privacy Policy
-                </a>
-                <a href="#" className="text-white/70 hover:text-white transition-colors">
-                  Terms of Service
-                </a>
-                <a href="#" className="text-white/70 hover:text-white transition-colors">
-                  Cookie Policy
-                </a>
-              </div>
             </div>
           </div>
         </div>

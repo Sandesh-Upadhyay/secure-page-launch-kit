@@ -82,7 +82,7 @@ const HeroSection = () => {
     { id: "mcafee-total-premium", name: "McAfee Total Protection Premium", subtitle: "Premium Security Package", salePrice: 94.99, originalPrice: 189.99, image: "/McAfee LiveSafe 3.jpg", link: "/product/mcafee-total-premium" },
     { id: "norton-360-standard-1", name: "Norton 360 Standard", subtitle: "Basic Protection Package", salePrice: 49.99, originalPrice: 99.99, image: "/Norton 360 Standard.jpg", link: "/product/norton-360-standard-1" },
     { id: "trend-micro-max-1", name: "Trend Micro Maximum Security", subtitle: "Complete Protection", salePrice: 69.99, originalPrice: 139.99, image: "/Trend Micro Maximum Security.jpg", link: "/product/trend-micro-max-1" },
-    { id: "webroot-secure-1", name: "Webroot SecureAnywhere", subtitle: "Light & Fast Protection", salePrice: 39.99, originalPrice: 79.99, image: "/Webroot secure Antivirus.jpg", link: "/product/webroot-secure-1" },
+    { id: "webroot-secure-1", name: "Webroot SecureAnywhere", subtitle: "Light & Fast Protection", salePrice: 39.99, originalPrice: 79.99, image: "/Webroot secure  Antivirus.jpg", link: "/product/webroot-secure-1" },
     { id: "norton-deluxe-2", name: "Norton 360 Deluxe", subtitle: "Premium Family Protection", salePrice: 89.99, originalPrice: 179.99, image: "/norton 360 deluxe.jpg", link: "/product/norton-deluxe-2" },
     { id: "bitdefender-family", name: "BitDefender Family Pack", subtitle: "Complete Family Security", salePrice: 99.99, originalPrice: 199.99, image: "/Bitdefender Antivirus Plus Digital Download.jpg", link: "/product/bitdefender-family" },
     { id: "mcafee-total-advanced", name: "McAfee Total Protection Advanced", subtitle: "Advanced Security Suite", salePrice: 79.99, originalPrice: 159.99, image: "/McAfee LiveSafe 4.jpg", link: "/product/mcafee-total-advanced" },
@@ -266,26 +266,31 @@ const HeroSection = () => {
                 </motion.span>
               </a>
             </motion.div>
-          ))}
-        </div>
+          ))}        </div>
+        
         {/* Trust badges section */}
-        <div className="mt-16 flex flex-wrap justify-center gap-6">
+        <div className="mt-8 flex flex-wrap justify-center gap-8">
           {[
-            { name: 'Norton', logo: '/norton-logo.png' },
-            { name: 'McAfee', logo: '/mcafee-logo.png' },
-            { name: 'Avast', logo: '/avast-logo.png' },
-            { name: 'Bitdefender', logo: '/bitdefender-logo.png' }
+            { name: 'Norton', logo: '/nortonlogo.jpg' },
+            { name: 'McAfee', logo: '/McAfee logo.jpg' },
+            { name: 'Avast', logo: '/Avast logo.jpg' },
+            { name: 'Bitdefender', logo: '/Bitdefender logo.jpg' }
           ].map((brand) => (
             <div
               key={brand.name}
-              className="bg-white px-6 py-3 rounded-full shadow-sm hover:shadow-md transition-shadow duration-200 flex items-center gap-2"
+              className="bg-white px-4 py-2 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200"
             >
-              <span className="text-lg font-medium text-gray-700">{brand.name}™</span>
+              <img 
+                src={brand.logo} 
+                alt={`${brand.name} Logo`}
+                className="h-12 w-auto object-contain"
+              />
             </div>
           ))}
         </div>
+
         {/* Additional CTA */}
-        <div className="mt-12 text-center">
+        <div className="mt-8 text-center">
                       </div>
       </div>
     </section>
