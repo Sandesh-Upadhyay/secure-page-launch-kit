@@ -123,20 +123,8 @@ const HeroSection = () => {
           </p>
           <div className="flex flex-col items-center gap-6">
             <div className="flex gap-4">
-              <Button 
-                className="px-8 py-4 text-xl font-medium rounded-full bg-green-600 hover:bg-green-700 text-white shadow-lg pulse-button"
-                onClick={() => window.open('https://wa.me/18775933166?text=Hi%20I%20want%20to%20explore%20your%20products', '_blank')}
-              >
-                Chat on WhatsApp
-              </Button>
-              <Button 
-                variant="outline" 
-                className="px-8 py-4 text-xl font-medium rounded-full border-green-600 text-green-600 hover:bg-green-50"
-                onClick={() => window.open('https://wa.me/18775933166?text=Hi%20I%20want%20a%20free%20trial', '_blank')}
-              >
-                Free Trial
-              </Button>
-            </div>
+              
+                          </div>
                         
             {/* Email capture form */}
             <motion.div 
@@ -145,23 +133,25 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
             >
-              <div className="relative flex items-center">
+              <div className="flex flex-col sm:flex-row items-center gap-0 w-full">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 bg-white/90 text-gray-800 placeholder-gray-500 px-6 py-4 text-lg rounded-l-full focus:outline-none focus:ring-2 focus:ring-green-500/30 border-r-0 border border-gray-200 shadow-sm"
+                  className="flex-1 bg-white/90 text-gray-800 placeholder-gray-500 px-6 py-4 text-lg rounded-l-full focus:outline-none focus:ring-2 focus:ring-green-500/30 border-r-0 border border-gray-200 shadow-sm w-full sm:w-auto"
                 />
-                <Button
-                  className="px-8 py-4 text-lg rounded-r-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white shadow-lg hover:shadow-xl transition-all"
-                  onClick={() => window.open('https://wa.me/18775933166?text=Hi%20I%20want%20to%20get%20started', '_blank')}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                <motion.a
+                  href="tel:+18775933166"
+                  className="w-full sm:w-auto sm:min-w-[180px] py-4 px-8 text-lg font-extrabold tracking-wide rounded-r-full bg-gradient-to-r from-green-500 to-emerald-600 hover:bg-gradient-to-br hover:from-green-600 hover:to-emerald-700 text-white shadow-lg focus:outline-none focus:ring-4 focus:ring-green-300 transition-all duration-200 uppercase text-center"
+                  aria-label="Buy Now - Call Support"
+                  style={{ fontSize: '1.25rem', letterSpacing: '0.04em' }}
+                  whileHover={{ scale: 1.06, boxShadow: "0 8px 32px 0 rgba(34,197,94,0.18)" }}
+                  whileTap={{ scale: 0.97 }}
                 >
-                  Chat Now
-                </Button>
+                  BUY NOW
+                </motion.a>
               </div>
               <p className="text-sm text-gray-600 mt-2 text-center">
-                We'll contact you via WhatsApp
+                Or call us directly for instant support
               </p>
             </motion.div>
             {/* Trust badge */}
@@ -261,12 +251,20 @@ const HeroSection = () => {
                   Save ${(product.originalPrice - product.salePrice).toFixed(2)}
                 </span>
               </div>
-              <Button
-                onClick={() => window.open(`https://wa.me/18775933166?text=Hi%20I%20want%20to%20buy%20${encodeURIComponent(product.name)}%20for%20$${product.salePrice}`, '_blank')}
-                className="w-full bg-green-600 hover:bg-green-700 text-white text-lg py-3 shadow-md"
+              <a
+                href="tel:+18775933166"
+                className="buy-now-btn w-full inline-flex items-center justify-center px-8 py-4 mb-2 text-lg font-extrabold text-white bg-gradient-to-r from-green-500 to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-green-300"
+                aria-label="Buy Now - Call Support"
               >
-                Buy Now
-              </Button>
+                🛒 BUY NOW
+                <motion.span
+                  className="ml-2"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  🔥
+                </motion.span>
+              </a>
             </motion.div>
           ))}
         </div>
@@ -288,14 +286,7 @@ const HeroSection = () => {
         </div>
         {/* Additional CTA */}
         <div className="mt-12 text-center">
-              <Button 
-                variant="outline"
-                className="px-8 py-6 text-xl font-medium rounded-full border-2 border-green-600 text-green-600 hover:bg-green-50 bg-white/10 backdrop-blur-lg shadow-lg"
-                onClick={() => window.open('https://wa.me/18775933166?text=Hi%20I%20have%20questions%20about%20your%20products', '_blank')}
-              >
-                Contact Us
-              </Button>
-        </div>
+                      </div>
       </div>
     </section>
   );

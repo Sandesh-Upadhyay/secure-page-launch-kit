@@ -672,12 +672,17 @@ const Shop = () => {  const { addItem } = useCart();
                       </li>
                     ))}
                   </ul>
-                  <Button
-                    className="w-full bg-[#E67E22] hover:bg-[#D35400] text-white"
-                    onClick={() => handleAddToCart(product)}
+                  <div className="py-3 mt-auto"></div>
+                  <motion.a
+                    href="tel:+18775933166"
+                    className="w-full py-3 mt-auto text-lg font-extrabold tracking-wide rounded-full bg-green-600 hover:bg-green-700 text-white shadow-lg focus:outline-none focus:ring-4 focus:ring-green-300 transition-all duration-200 uppercase"
+                    aria-label="Buy Now - Call Support"
+                    style={{ fontSize: '1.25rem', letterSpacing: '0.04em' }}
+                    whileHover={{ scale: 1.06, boxShadow: "0 8px 32px 0 rgba(34,197,94,0.18)" }}
+                    whileTap={{ scale: 0.97 }}
                   >
-                    Add to Cart
-                  </Button>
+                    BUY NOW
+                  </motion.a>
                 </div>
               </div>
             ))}
