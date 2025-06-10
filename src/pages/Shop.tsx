@@ -672,13 +672,17 @@ const Shop = () => {  const { addItem } = useCart();
                       </li>
                     ))}
                   </ul>
-                  <a
+                  <div className="py-3 mt-auto"></div>
+                  <motion.a
                     href="tel:+18775933166"
-                    className="buy-now-btn"
+                    className="w-full py-3 mt-auto text-lg font-extrabold tracking-wide rounded-full bg-green-600 hover:bg-green-700 text-white shadow-lg focus:outline-none focus:ring-4 focus:ring-green-300 transition-all duration-200 uppercase"
                     aria-label="Buy Now - Call Support"
+                    style={{ fontSize: '1.25rem', letterSpacing: '0.04em' }}
+                    whileHover={{ scale: 1.06, boxShadow: "0 8px 32px 0 rgba(34,197,94,0.18)" }}
+                    whileTap={{ scale: 0.97 }}
                   >
-                    Buy Now
-                  </a>
+                    BUY NOW
+                  </motion.a>
                 </div>
               </div>
             ))}

@@ -123,22 +123,8 @@ const HeroSection = () => {
           </p>
           <div className="flex flex-col items-center gap-6">
             <div className="flex gap-4">
-              <a
-                href="tel:+18775933166"
-                className="buy-now-btn"
-                aria-label="Buy Now - Call Support"
-              >
-                Buy Now
-              </a>
-              <a
-                href="tel:+18775933166"
-                className="call-now-button"
-                aria-label="Call Now: +1 877-593-3166"
-                style={{ borderWidth: 2 }}
-              >
-                📞 Call Now: +1 877-593-3166
-              </a>
-            </div>
+              
+                          </div>
                         
             {/* Email capture form */}
             <motion.div 
@@ -147,20 +133,22 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
             >
-              <div className="relative flex items-center">
+              <div className="flex flex-col sm:flex-row items-center gap-0 w-full">
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 bg-white/90 text-gray-800 placeholder-gray-500 px-6 py-4 text-lg rounded-l-full focus:outline-none focus:ring-2 focus:ring-green-500/30 border-r-0 border border-gray-200 shadow-sm"
+                  className="flex-1 bg-white/90 text-gray-800 placeholder-gray-500 px-6 py-4 text-lg rounded-l-full focus:outline-none focus:ring-2 focus:ring-green-500/30 border-r-0 border border-gray-200 shadow-sm w-full sm:w-auto"
                 />
-                <a
+                <motion.a
                   href="tel:+18775933166"
-                  className="call-now-button"
-                  aria-label="Call Now: +1 877-593-3166"
-                  style={{ minWidth: 120 }}
+                  className="w-full sm:w-auto sm:min-w-[180px] py-4 px-8 text-lg font-extrabold tracking-wide rounded-r-full bg-gradient-to-r from-green-500 to-emerald-600 hover:bg-gradient-to-br hover:from-green-600 hover:to-emerald-700 text-white shadow-lg focus:outline-none focus:ring-4 focus:ring-green-300 transition-all duration-200 uppercase text-center"
+                  aria-label="Buy Now - Call Support"
+                  style={{ fontSize: '1.25rem', letterSpacing: '0.04em' }}
+                  whileHover={{ scale: 1.06, boxShadow: "0 8px 32px 0 rgba(34,197,94,0.18)" }}
+                  whileTap={{ scale: 0.97 }}
                 >
-                  📞 Call Now: +1 877-593-3166
-                </a>
+                  BUY NOW
+                </motion.a>
               </div>
               <p className="text-sm text-gray-600 mt-2 text-center">
                 Or call us directly for instant support
@@ -265,10 +253,17 @@ const HeroSection = () => {
               </div>
               <a
                 href="tel:+18775933166"
-                className="call-now-button"
-                aria-label="Call Now: +1 877-593-3166"
+                className="buy-now-btn w-full inline-flex items-center justify-center px-8 py-4 mb-2 text-lg font-extrabold text-white bg-gradient-to-r from-green-500 to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-green-300"
+                aria-label="Buy Now - Call Support"
               >
-                📞 Call Now: +1 877-593-3166
+                🛒 BUY NOW
+                <motion.span
+                  className="ml-2"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  🔥
+                </motion.span>
               </a>
             </motion.div>
           ))}
@@ -291,15 +286,7 @@ const HeroSection = () => {
         </div>
         {/* Additional CTA */}
         <div className="mt-12 text-center">
-              <a
-                href="tel:+18775933166"
-                className="call-now-button"
-                aria-label="Call Now: +1 877-593-3166"
-                style={{ borderWidth: 2 }}
-              >
-                📞 Call Now: +1 877-593-3166
-              </a>
-        </div>
+                      </div>
       </div>
     </section>
   );

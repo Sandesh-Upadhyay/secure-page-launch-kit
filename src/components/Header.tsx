@@ -208,7 +208,7 @@ const Header = () => {
             </div>
 
             <motion.div 
-              className="flex items-center gap-4"
+              className="fixed right-4 top-4 z-[99999] flex items-center gap-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
@@ -227,14 +227,16 @@ const Header = () => {
                 )}
               </motion.button>
 
-              <a
+              <motion.a
                 href="tel:+18775933166"
-                className="call-now-button"
+                className="rounded-full px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-medium hover:from-green-600 hover:to-emerald-700 transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105 flex items-center gap-2 z-[10001]"
                 aria-label="Call Now: +1 877-593-3166"
-                style={{ minWidth: 120, textAlign: 'center' }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                📞 Call Now: +1 877-593-3166
-              </a>
+                <span>📞</span>
+                <span>Contact</span>
+              </motion.a>
             </motion.div>
           </div>
 
