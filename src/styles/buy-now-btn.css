@@ -1,0 +1,31 @@
+.buy-now-btn {
+  display: inline-block;
+  width: 100%;
+  max-width: 340px;
+  background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);
+  color: #fff;
+  font-size: 1.35rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 1.1rem 1.5rem;
+  border-radius: 0.85rem;
+  box-shadow: 0 4px 16px rgba(30, 64, 175, 0.13);
+  margin: 0.5rem auto;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+  cursor: pointer;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.buy-now-btn:hover, .buy-now-btn:focus {
+  background: linear-gradient(90deg, #1e40af 0%, #2563eb 100%);
+  box-shadow: 0 6px 24px rgba(30, 64, 175, 0.19);
+  outline: none;
+  transform: scale(1.04);
+}
+@media (max-width: 600px) {
+  .buy-now-btn {
+    font-size: 1.15rem;
+    padding: 1rem 1rem;
+    border-radius: 0.7rem;
+  }
+}
