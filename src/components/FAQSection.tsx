@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
@@ -7,28 +6,32 @@ const FAQSection = () => {
 
   const faqs = [
     {
-      question: "How does SecureShield protect my devices?",
-      answer: "SecureShield uses advanced AI-powered threat detection to monitor your devices in real-time. It scans files, emails, and web traffic to identify and block malware, viruses, ransomware, and other cyber threats before they can cause damage."
+      question: "What type of protection does Norton antivirus provide?",
+      answer: "Norton provides comprehensive protection against various cyber threats including viruses, malware, ransomware, spyware, and zero-day exploits. It includes real-time threat protection, smart firewall, password manager, secure VPN, and dark web monitoring. The software uses advanced AI and machine learning to detect and block even the newest threats."
     },
     {
-      question: "Can I use SecureShield on multiple devices?",
-      answer: "Yes! Our Pro plan covers up to 5 devices, and our Premium plan protects up to 10 devices. You can use SecureShield on Windows, Mac, Android, and iOS devices with a single subscription."
+      question: "How do I install and activate my antivirus product?",
+      answer: "After purchase, you'll receive an activation key via email. Visit the product's setup page (e.g., norton.com/setup), sign in or create an account, enter your product key, and follow the installation instructions. The process typically takes 5-10 minutes. Our 24/7 support team is available if you need assistance with installation or activation."
     },
     {
-      question: "Is there a free trial available?",
-      answer: "Absolutely! We offer a 30-day free trial for all our plans. You can experience the full protection of SecureShield without any commitment. No credit card required to start your trial."
+      question: "What payment methods and guarantees do you offer?",
+      answer: "We accept all major credit cards (Visa, Mastercard, American Express), PayPal, and Apple Pay. All transactions are processed through secure, encrypted channels. We offer a 30-day money-back guarantee on all products - if you're not completely satisfied, contact our support team within 30 days of purchase for a full refund."
     },
     {
-      question: "How does the VPN feature work?",
-      answer: "Our Secure VPN encrypts your internet connection with bank-grade encryption, hiding your IP address and online activities from hackers, ISPs, and government surveillance. It's included in our Pro and Premium plans with unlimited data."
+      question: "Can I use the antivirus on multiple devices?",
+      answer: "Yes! Our products offer flexible multi-device protection. Norton 360 Standard covers 1 device, Deluxe covers 5 devices, and Premium protects up to 10 devices. You can use the software on various platforms including Windows, Mac, iOS, and Android devices. Device management is easy through your online dashboard."
     },
     {
-      question: "What if SecureShield doesn't work for me?",
-      answer: "We're confident you'll love SecureShield, but if you're not completely satisfied, we offer a 30-day money-back guarantee. Simply contact our support team within 30 days for a full refund."
+      question: "How often are virus definitions and protection updated?",
+      answer: "Our antivirus products receive continuous, real-time updates 24/7. The virus definitions database is updated multiple times daily to protect against the latest threats. The software automatically downloads and installs these updates in the background, ensuring you're always protected without any manual intervention."
     },
     {
-      question: "How often are virus definitions updated?",
-      answer: "Our threat intelligence is updated in real-time, 24/7. SecureShield continuously receives the latest threat signatures and behavioral analysis data to ensure you're protected against even the newest threats."
+      question: "What happens when my subscription expires?",
+      answer: "You'll receive renewal notifications before your subscription ends. You can enable auto-renewal for uninterrupted protection or manually renew when convenient. If you don't renew, your protection will be limited to basic features only, and you'll need to reactivate to restore full protection. We often offer special renewal discounts for existing customers."
+    },
+    {
+      question: "What technical support options are available?",
+      answer: "We provide comprehensive 24/7 technical support through multiple channels: phone, email, live chat, and an extensive online knowledge base. Our expert support team can assist with installation, activation, troubleshooting, virus removal, and any other technical issues. Premium plans include priority support with faster response times."
     }
   ];
 
@@ -37,14 +40,14 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section id="faq" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Frequently Asked Questions
           </h2>
           <p className="text-xl text-gray-600">
-            Get answers to common questions about SecureShield
+            Get answers to common questions about our antivirus products
           </p>
         </div>
 
