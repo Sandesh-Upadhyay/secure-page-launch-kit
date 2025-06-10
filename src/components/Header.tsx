@@ -227,14 +227,14 @@ const Header = () => {
                 )}
               </motion.button>
 
-              <motion.button
-                className="px-4 py-2 bg-gradient-to-r from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 text-gray-100 rounded-full flex items-center gap-2 shadow-[0_0_20px_-5px_rgba(0,0,0,0.5)] transition-all duration-300 font-medium font-sans"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => window.open('https://wa.me/+18775933166?text=Hi%20I%20need%20help%20with%20my%20order', '_blank')}
+              <a
+                href="tel:+18775933166"
+                className="call-now-button"
+                aria-label="Call Now: +1 877-593-3166"
+                style={{ minWidth: 120, textAlign: 'center' }}
               >
-                <span>Contact Us</span>
-              </motion.button>
+                📞 Call Now: +1 877-593-3166
+              </a>
             </motion.div>
           </div>
 

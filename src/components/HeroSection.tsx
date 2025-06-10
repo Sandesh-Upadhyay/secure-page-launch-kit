@@ -123,19 +123,21 @@ const HeroSection = () => {
           </p>
           <div className="flex flex-col items-center gap-6">
             <div className="flex gap-4">
-              <Button 
-                className="px-8 py-4 text-xl font-medium rounded-full bg-green-600 hover:bg-green-700 text-white shadow-lg pulse-button"
-                onClick={() => window.open('https://wa.me/18775933166?text=Hi%20I%20want%20to%20explore%20your%20products', '_blank')}
+              <a
+                href="tel:+18775933166"
+                className="buy-now-btn"
+                aria-label="Buy Now - Call Support"
               >
-                Chat on WhatsApp
-              </Button>
-              <Button 
-                variant="outline" 
-                className="px-8 py-4 text-xl font-medium rounded-full border-green-600 text-green-600 hover:bg-green-50"
-                onClick={() => window.open('https://wa.me/18775933166?text=Hi%20I%20want%20a%20free%20trial', '_blank')}
+                Buy Now
+              </a>
+              <a
+                href="tel:+18775933166"
+                className="call-now-button"
+                aria-label="Call Now: +1 877-593-3166"
+                style={{ borderWidth: 2 }}
               >
-                Free Trial
-              </Button>
+                📞 Call Now: +1 877-593-3166
+              </a>
             </div>
                         
             {/* Email capture form */}
@@ -151,17 +153,17 @@ const HeroSection = () => {
                   placeholder="Enter your email"
                   className="flex-1 bg-white/90 text-gray-800 placeholder-gray-500 px-6 py-4 text-lg rounded-l-full focus:outline-none focus:ring-2 focus:ring-green-500/30 border-r-0 border border-gray-200 shadow-sm"
                 />
-                <Button
-                  className="px-8 py-4 text-lg rounded-r-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white shadow-lg hover:shadow-xl transition-all"
-                  onClick={() => window.open('https://wa.me/18775933166?text=Hi%20I%20want%20to%20get%20started', '_blank')}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                <a
+                  href="tel:+18775933166"
+                  className="call-now-button"
+                  aria-label="Call Now: +1 877-593-3166"
+                  style={{ minWidth: 120 }}
                 >
-                  Chat Now
-                </Button>
+                  📞 Call Now: +1 877-593-3166
+                </a>
               </div>
               <p className="text-sm text-gray-600 mt-2 text-center">
-                We'll contact you via WhatsApp
+                Or call us directly for instant support
               </p>
             </motion.div>
             {/* Trust badge */}
@@ -261,12 +263,13 @@ const HeroSection = () => {
                   Save ${(product.originalPrice - product.salePrice).toFixed(2)}
                 </span>
               </div>
-              <Button
-                onClick={() => window.open(`https://wa.me/18775933166?text=Hi%20I%20want%20to%20buy%20${encodeURIComponent(product.name)}%20for%20$${product.salePrice}`, '_blank')}
-                className="w-full bg-green-600 hover:bg-green-700 text-white text-lg py-3 shadow-md"
+              <a
+                href="tel:+18775933166"
+                className="call-now-button"
+                aria-label="Call Now: +1 877-593-3166"
               >
-                Buy Now
-              </Button>
+                📞 Call Now: +1 877-593-3166
+              </a>
             </motion.div>
           ))}
         </div>
@@ -288,13 +291,14 @@ const HeroSection = () => {
         </div>
         {/* Additional CTA */}
         <div className="mt-12 text-center">
-              <Button 
-                variant="outline"
-                className="px-8 py-6 text-xl font-medium rounded-full border-2 border-green-600 text-green-600 hover:bg-green-50 bg-white/10 backdrop-blur-lg shadow-lg"
-                onClick={() => window.open('https://wa.me/18775933166?text=Hi%20I%20have%20questions%20about%20your%20products', '_blank')}
+              <a
+                href="tel:+18775933166"
+                className="call-now-button"
+                aria-label="Call Now: +1 877-593-3166"
+                style={{ borderWidth: 2 }}
               >
-                Contact Us
-              </Button>
+                📞 Call Now: +1 877-593-3166
+              </a>
         </div>
       </div>
     </section>

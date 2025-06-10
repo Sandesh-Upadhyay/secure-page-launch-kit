@@ -101,19 +101,13 @@ const ProductPlans = () => {
                   ))}
                 </ul>
                 
-                <Button 
-                  className={`w-full py-6 text-xl font-semibold rounded-xl transition-all duration-300 ${
-                    plan.popular
-                      ? "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl"
-                      : "bg-gray-800 hover:bg-gray-900 text-white shadow-md hover:shadow-lg"
-                  }`}
-                  onClick={() => window.open(
-                    `https://wa.me/+18775933166?text=Hi%20I%20want%20to%20buy:%0A%0APlan:%20${encodeURIComponent(plan.name)}%0APrice:%20${plan.price}%0AFeatures:%20${encodeURIComponent(plan.features.join(', '))}%0A%0ACould%20you%20help%20me%20purchase%20this?`,
-                    '_blank'
-                  )}
+                <a
+                  href="tel:+18775933166"
+                  className="buy-now-btn"
+                  aria-label="Buy Now - Call Support"
                 >
                   Buy Now
-                </Button>
+                </a>
               </CardContent>
             </Card>
           ))}

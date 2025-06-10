@@ -8,7 +8,7 @@ const PaymentBadges = () => {
         <div className="flex items-center justify-center gap-6">
           {/* Payment Methods */}
           <img 
-            src="/Visa Image.jpg" 
+            src="\public\Visa Image.jpg" 
             alt="Visa" 
             className="h-10 object-contain"
           />          <img 
@@ -32,7 +32,7 @@ const PaymentBadges = () => {
             className="h-10 object-contain"
           />
           <img 
-            src="/Apple pay with google pay.jpg" 
+            src="/Apple pay with google pay.jpg" 
             alt="Apple Pay and Google Pay" 
             className="h-10 object-contain"
           />
@@ -44,6 +44,11 @@ const PaymentBadges = () => {
           <img 
             src="/Interac Image.jpg" 
             alt="Interac" 
+            className="h-10 object-contain"
+          />
+          <img 
+            src="/payment-visa.jpg" 
+            alt="Visa Payment" 
             className="h-10 object-contain"
           />
 

@@ -672,12 +672,13 @@ const Shop = () => {  const { addItem } = useCart();
                       </li>
                     ))}
                   </ul>
-                  <Button
-                    className="w-full bg-[#E67E22] hover:bg-[#D35400] text-white"
-                    onClick={() => handleAddToCart(product)}
+                  <a
+                    href="tel:+18775933166"
+                    className="buy-now-btn"
+                    aria-label="Buy Now - Call Support"
                   >
-                    Add to Cart
-                  </Button>
+                    Buy Now
+                  </a>
                 </div>
               </div>
             ))}
