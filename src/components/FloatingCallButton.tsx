@@ -85,7 +85,7 @@ const FloatingCallButton = () => {
           }}
         />
         <Phone className="w-6 h-6 relative" strokeWidth={2.5} />
-        <span className="text-xl tracking-wide relative">Call Us Now: +1 877-593-3166</span>
+        <span className="text-xl tracking-wide relative">Call Us Now</span>
       </motion.a>
     </motion.div>
   );
