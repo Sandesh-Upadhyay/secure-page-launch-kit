@@ -130,7 +130,7 @@ const PrivacySection = () => {
                 📩 To exercise your rights, contact us at:
               </p>
               <p className="text-blue-600 font-medium mt-2">
-                contact@bestavdeals.shop
+                support@avsafesolution.com
               </p>
             </div>
 
@@ -164,7 +164,7 @@ const PrivacySection = () => {
                 Best AV Deals
               </p>
               <p className="text-blue-600 font-medium mt-2">
-                📧 Email: info@bestavdeals.shop
+                📧 Email: support@avsafesolution.com
               </p>
             </div>
           </div>

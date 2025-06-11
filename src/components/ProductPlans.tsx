@@ -102,9 +102,9 @@ const ProductPlans = () => {
                 </ul>
                 
                 <a
-                  href="tel:+18775933166"
+                  href="tel:+1 877-593-3166"
                   className="buy-now-btn"
-                  aria-label="Buy Now - Call Support"
+                  aria-label="Buy Now - Call Support (+1 877-593-3166)"
                 >
                   Buy Now
                 </a>

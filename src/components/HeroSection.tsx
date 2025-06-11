@@ -137,7 +137,7 @@ const HeroSection = () => {
               transition={{ duration: 0.8 }}
             >
               <motion.a 
-                href="tel:+18335344002"
+                href="tel:+1 877-593-3166"
                 className="flex items-center gap-4 bg-white/80 backdrop-blur-md border-2 border-blue-200/50 text-blue-900 text-xl md:text-3xl font-bold rounded-[2rem] py-4 pl-6 pr-8 shadow-lg hover:shadow-xl transition-all relative overflow-hidden"
                 whileHover={{ 
                   scale: 1.05,
@@ -170,7 +170,7 @@ const HeroSection = () => {
                 </motion.div>
                 
                 <span className="relative">
-                  +1 (833) 534-4002
+                  +1 877-593-3166
                   <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500/30 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                 </span>
                 
@@ -213,7 +213,7 @@ const HeroSection = () => {
                   className="flex-1 bg-white/90 text-gray-800 placeholder-gray-500 px-6 py-4 text-lg rounded-l-full focus:outline-none focus:ring-2 focus:ring-green-500/30 border-r-0 border border-gray-200 shadow-sm w-full sm:w-auto"
                 />
                 <motion.a
-                  href="tel:+18775933166"
+                  href="tel:+1 877-593-3166"
                   className="w-full sm:w-auto sm:min-w-[180px] py-4 px-8 text-lg font-extrabold tracking-wide rounded-r-full bg-gradient-to-r from-green-500 to-emerald-600 hover:bg-gradient-to-br hover:from-green-600 hover:to-emerald-700 text-white shadow-lg focus:outline-none focus:ring-4 focus:ring-green-300 transition-all duration-200 uppercase text-center"
                   aria-label="Buy Now - Call Support"
                   style={{ fontSize: '1.25rem', letterSpacing: '0.04em' }}
@@ -325,7 +325,7 @@ const HeroSection = () => {
                 </span>
               </div>
               <a
-                href="tel:+18775933166"
+                href="tel:+1 877-593-3166"
                 className="buy-now-btn w-full inline-flex items-center justify-center px-8 py-4 mb-2 text-lg font-extrabold text-white bg-gradient-to-r from-green-500 to-emerald-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-green-300"
                 aria-label="Buy Now - Call Support"
               >

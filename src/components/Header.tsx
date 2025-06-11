@@ -152,15 +152,26 @@ const Header = () => {
 
             <Navigation scrollToSection={scrollToSection} className="w-full md:w-auto" />
 
-            <div className="flex items-center gap-4 w-full md:w-auto justify-between md:justify-end">
+            <div className="flex items-center space-x-4 relative w-full max-w-lg justify-end">
+              {/* Responsive Call Us Now button: visible on all mobile and tablet, hidden on desktop/laptop */}
               <a
                 href="tel:+18775933166"
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-green-600 text-white font-semibold hover:bg-green-700 transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105"
+                className="fixed bottom-6 right-6 z-[10001] flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold text-lg shadow-lg hover:from-green-600 hover:to-emerald-700 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-green-300 sm:bottom-8 sm:right-8 md:bottom-10 md:right-10 lg:hidden"
                 aria-label="Call Now: +1 877-593-3166"
                 style={{ textDecoration: 'none' }}
               >
                 <span>📞</span>
-                <span className="hidden sm:inline">Contact</span>
+                <span>Call Us Now</span>
+              </a>
+              {/* Desktop Contact button: visible only on large screens and up, and on mobile shown inline with nav */}
+              <a
+                href="tel:+18775933166"
+                className="hidden lg:flex rounded-full px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold hover:from-green-600 hover:to-emerald-700 transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105 items-center gap-2 text-base lg:text-lg xl:text-xl justify-center lg:ml-4"
+                aria-label="Call Now: +1 877-593-3166"
+                style={{ textDecoration: 'none' }}
+              >
+                <span>📞</span>
+                <span className="truncate">Contact</span>
               </a>
             </div>
           </div>

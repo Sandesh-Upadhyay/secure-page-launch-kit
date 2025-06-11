@@ -4,7 +4,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const FloatingCallButton = () => {
   const isMobile = useIsMobile();
-  const phoneNumber = "+18335344002";
+  const phoneNumber = "+1 877-593-3166";
 
   if (!isMobile) return null;
 

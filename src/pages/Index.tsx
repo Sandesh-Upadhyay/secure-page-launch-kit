@@ -49,9 +49,9 @@ const Index = () => {
           <HeroSection />
           <div className="flex justify-center mt-8 w-full">
             <motion.a
-              href="tel:+18775933166"
+              href="tel:+1 877-593-3166"
               className="w-full max-w-xs py-4 px-8 text-lg font-extrabold tracking-wide rounded-full bg-green-600 hover:bg-green-700 text-white shadow-lg focus:outline-none focus:ring-4 focus:ring-green-300 transition-all duration-200 uppercase text-center"
-              aria-label="Buy Now - Call Support"
+              aria-label="Buy Now - Call Support (+1 877-593-3166)"
               whileHover={{ scale: 1.06, boxShadow: "0 8px 32px 0 rgba(34,197,94,0.18)" }}
               whileTap={{ scale: 0.97 }}
             >
