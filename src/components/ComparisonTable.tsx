@@ -40,9 +40,9 @@ const ComparisonTable = () => {
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <div className="grid grid-cols-4 bg-gray-900 text-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="bg-white rounded-lg shadow-lg overflow-x-auto">
+            <div className="grid grid-cols-2 sm:grid-cols-4 bg-gray-900 text-white min-w-[800px]">
               <div className="p-6">
                 <h3 className="text-lg font-semibold">Features</h3>
               </div>
@@ -63,9 +63,9 @@ const ComparisonTable = () => {
             {features.map((feature, index) => (
               <div
                 key={feature.name}
-                className={`grid grid-cols-4 ${
+                className={`grid grid-cols-2 sm:grid-cols-4 ${
                   index % 2 === 0 ? "bg-gray-50" : "bg-white"
-                }`}
+                } min-w-[800px]`}
               >
                 <div className="p-4 font-medium text-gray-900">
                   {feature.name}

@@ -1,6 +1,8 @@
 import { useCart } from "@/contexts/CartContext"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
+import FloatingCallButton from "./FloatingCallButton"
+import { Phone } from "lucide-react"
 
 const SaleBadge = () => (
   <motion.div
@@ -107,8 +109,9 @@ const HeroSection = () => {
   ]
 
   return (
-    <section className="relative py-20 overflow-hidden bg-gradient-to-br from-blue-50 to-teal-50">
-      <div className="container relative mx-auto px-4">
+    <>
+      <section className="relative py-12 md:py-20 overflow-hidden bg-gradient-to-br from-blue-50 to-teal-50">
+        <div className="container relative mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center mb-16">
             <h1 className="text-4xl md:text-6xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 animate-gradient-x">
               Exclusive Security Software Deals
@@ -118,7 +121,7 @@ const HeroSection = () => {
               <span className="text-blue-500">Trusted.</span>
             </span>
           </h1>
-          <p className="text-2xl md:text-3xl text-gray-700 mb-8 max-w-3xl mx-auto" style={{fontWeight: 500}}>
+          <p className="text-xl md:text-2xl lg:text-3xl text-gray-800 mb-8 max-w-3xl mx-auto px-4" style={{fontWeight: 500}}>
             Comprehensive protection for your digital world
           </p>
           <div className="flex flex-col items-center gap-6">
@@ -126,6 +129,76 @@ const HeroSection = () => {
               
                           </div>
                         
+            {/* Phone button */}
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <motion.a 
+                href="tel:+18335344002"
+                className="flex items-center gap-4 bg-white/80 backdrop-blur-md border-2 border-blue-200/50 text-blue-900 text-xl md:text-3xl font-bold rounded-[2rem] py-4 pl-6 pr-8 shadow-lg hover:shadow-xl transition-all relative overflow-hidden"
+                whileHover={{ 
+                  scale: 1.05,
+                  y: -3,
+                  boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.3)"
+                }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {/* Shield icon background */}
+                <div className="absolute -left-2 -top-2 text-red-500/10">
+                  <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  </svg>
+                </div>
+                
+                <motion.div
+                  className="relative bg-gradient-to-br from-blue-100 to-blue-200 p-4 rounded-full"
+                  animate={{
+                    rotate: [0, 5, -5, 0],
+                    scale: [1, 1.05, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                  }}
+                >
+                  <div className="absolute inset-0 bg-blue-500/10 rounded-full animate-pulse"></div>
+                  <Phone className="relative z-10 w-8 h-8 md:w-10 md:h-10 text-blue-600" />
+                </motion.div>
+                
+                <span className="relative">
+                  +1 (833) 534-4002
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500/30 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                </span>
+                
+                {/* Virus scan animation */}
+                <div className="absolute -right-2 -bottom-2 w-16 h-16">
+                  <div className="absolute inset-0 rounded-full border-2 border-green-500/20 animate-ping opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+              </motion.a>
+              
+              {/* Digital protection theme */}
+              <div className="absolute inset-0 rounded-[2rem] overflow-hidden z-[-1] opacity-20">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-blue-600/20 animate-[pulse_6s_ease-in-out_infinite]"></div>
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjMDAwMDAwIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDBMNCA0WiIgZmlsbD0icmdiYSgwLDAsMCwwLjA1KSI+PC9wYXRoPgo8cGF0aCBkPSJNNCAwTDAgNFoiIGZpbGw9InJnYmEoMCwwLDAsMC4wNSkiPjwvcGF0aD4KPC9zdmc+')] opacity-10"></div>
+              </div>
+              
+              {/* Floating virus icons */}
+              <div className="absolute -left-4 -top-4 text-red-500/20 animate-float">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"></path>
+                  <path d="M8.5 8.5v.01"></path>
+                  <path d="M16 15.5v.01"></path>
+                  <path d="M12 12v.01"></path>
+                  <path d="M11 17v.01"></path>
+                  <path d="M7 14v.01"></path>
+                </svg>
+              </div>
+            </motion.div>
+
             {/* Email capture form */}
             <motion.div 
               className="w-full max-w-md"
@@ -226,7 +299,7 @@ const HeroSection = () => {
             100% { transform: scale(1); }
           }
         `}</style>
-        <div id="products" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+        <div id="products" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-4 relative z-10">
           {products.map((product) => (
             <motion.div 
               key={product.name}
@@ -294,6 +367,8 @@ const HeroSection = () => {
                       </div>
       </div>
     </section>
+    <FloatingCallButton />
+    </>
   );
 };
 

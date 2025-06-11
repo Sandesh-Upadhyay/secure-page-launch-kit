@@ -34,34 +34,34 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="bg-white py-16 border-t">
+    <footer className="bg-white py-12 md:py-16 border-t">
       <div className="container mx-auto px-4">
         {/* SSL Secure Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          <div className="flex items-center gap-4">
-            <img src="/SSL Secure image.jpg" alt="SSL Secure" className="h-16 object-contain" />
-            <img src="/HTTPS Secure.jpg" alt="HTTPS Secure" className="h-16 object-contain" />
-            <img src="/Norton Authorized Reseller.jpg" alt="Norton Authorized Reseller" className="h-12 object-contain" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+          <div className="flex flex-wrap items-center gap-4">
+            <img src="/SSL Secure image.jpg" alt="SSL Secure" className="h-12 sm:h-16 object-contain transition-transform hover:scale-105" />
+            <img src="/HTTPS Secure.jpg" alt="HTTPS Secure" className="h-12 sm:h-16 object-contain transition-transform hover:scale-105" />
+            <img src="/Norton Authorized Reseller.jpg" alt="Norton Authorized Reseller" className="h-10 sm:h-12 object-contain transition-transform hover:scale-105" />
           </div>
-          <div className="flex flex-wrap items-center justify-end gap-4">
-            <img src="/American Express.jpg" alt="American Express" className="h-8 object-contain" />
-            <img src="/Master card image.jpg" alt="Mastercard" className="h-8 object-contain" />
-            <img src="/Visa Image.jpg" alt="Visa" className="h-8 object-contain" />
-            <img src="/paypal image.jpg" alt="PayPal" className="h-8 object-contain" />
-            <img src="/Apple Pay.jpg" alt="Apple Pay" className="h-8 object-contain" />
+          <div className="flex flex-wrap items-center justify-center lg:justify-end gap-3 sm:gap-4">
+            <img src="/American Express.jpg" alt="American Express" className="h-6 sm:h-8 object-contain transition-transform hover:scale-105" />
+            <img src="/Master card image.jpg" alt="Mastercard" className="h-6 sm:h-8 object-contain transition-transform hover:scale-105" />
+            <img src="/Visa Image.jpg" alt="Visa" className="h-6 sm:h-8 object-contain transition-transform hover:scale-105" />
+            <img src="/paypal image.jpg" alt="PayPal" className="h-6 sm:h-8 object-contain transition-transform hover:scale-105" />
+            <img src="/Apple Pay.jpg" alt="Apple Pay" className="h-6 sm:h-8 object-contain transition-transform hover:scale-105" />
           </div>
         </div>
 
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-12">
           {/* Products */}
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Products</h3>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-600 hover:text-gray-900">Norton Security Standard</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-gray-900">Norton 360 Standard</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-gray-900">Norton 360 Deluxe</a></li>
-              <li><a href="#" className="text-gray-600 hover:text-gray-900">Norton 360 Premium</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">Norton Security Standard</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">Norton 360 Standard</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">Norton 360 Deluxe</a></li>
+              <li><a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">Norton 360 Premium</a></li>
             </ul>
           </div>
 

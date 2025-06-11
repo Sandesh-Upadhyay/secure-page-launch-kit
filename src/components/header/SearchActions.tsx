@@ -1,4 +1,4 @@
-import { Search, X, Menu, User } from "lucide-react"
+import { Search, X, Menu, User, ShoppingCart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useNavigate } from 'react-router-dom'
 import {
@@ -8,9 +8,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { useAuth } from "@/contexts/AuthContext"
+import { useState } from "react"
+import { Command } from "cmdk"
+import { Dialog } from "@/components/ui/dialog"
 
 interface SearchActionsProps {
-  handleSearch: (e: React.FormEvent) => void
+  handleSearch: (searchTerm: string) => void
   isMobileMenuOpen: boolean
   toggleMobileMenu: () => void
 }
@@ -18,26 +21,58 @@ interface SearchActionsProps {
 export const SearchActions = ({ handleSearch, isMobileMenuOpen, toggleMobileMenu }: SearchActionsProps) => {
   const navigate = useNavigate()
   const { user, logout } = useAuth()
+  const [searchOpen, setSearchOpen] = useState(false)
+  const [searchTerm, setSearchTerm] = useState("")
 
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    handleSearch(searchTerm)
+    setSearchOpen(false)
+  }
   return (
-    <div className="flex items-center space-x-4">
-      {/* Search Bar */}
-      <form onSubmit={handleSearch} className="hidden md:flex relative group">
-        <input
-          type="text"
-          placeholder="Search products..."
-          className="w-[200px] py-2 px-4 pr-10 bg-slate-800/50 border border-slate-700 rounded-lg text-white 
-            placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent 
-            transition-all duration-300 focus:w-[300px] search-input"
-        />
-        <button
-          type="submit"
-          className="absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-orange-400 
-            transition-colors duration-300 focus:outline-none"
-        >
-          <Search className="h-5 w-5" />
-        </button>
-      </form>
+    <div className="flex items-center space-x-2 md:space-x-4">
+      {/* Search Button - Mobile & Desktop */}
+      <button
+        onClick={() => setSearchOpen(true)}
+        className="p-2 text-slate-400 hover:text-orange-400 transition-colors duration-300"
+        aria-label="Search"
+      >
+        <Search className="h-5 w-5" />
+      </button>
+
+      {/* Search Dialog */}
+      <Dialog open={searchOpen} onOpenChange={setSearchOpen}>
+        <Command className="rounded-lg border shadow-md">
+          <form onSubmit={handleSearchSubmit} className="flex items-center p-4 border-b">
+            <Search className="h-5 w-5 text-slate-400 mr-2" />
+            <input
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="flex-1 outline-none bg-transparent placeholder:text-slate-400"
+              placeholder="Search products..."
+            />
+            {searchTerm && (
+              <button
+                type="button"
+                onClick={() => setSearchTerm("")}
+                className="text-slate-400 hover:text-slate-500"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            )}
+          </form>
+        </Command>
+      </Dialog>
+
+      {/* Cart Button */}
+      <Button
+        onClick={() => navigate('/cart')}
+        variant="ghost"
+        size="icon"
+        className="relative text-slate-400 hover:text-orange-400"
+      >
+        <ShoppingCart className="h-5 w-5" />
+      </Button>
 
       {/* User Profile/Login */}
       {user ? (
@@ -87,9 +122,11 @@ export const SearchActions = ({ handleSearch, isMobileMenuOpen, toggleMobileMenu
       )}
 
       {/* Mobile Menu Button */}
-      <button
+      <Button
         onClick={toggleMobileMenu}
-        className="lg:hidden p-2 text-white hover:text-orange-400 transition-colors duration-300"
+        variant="ghost"
+        size="icon"
+        className="lg:hidden"
         aria-label="Toggle mobile menu"
       >
         {isMobileMenuOpen ? (
