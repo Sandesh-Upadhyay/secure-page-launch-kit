@@ -15,7 +15,7 @@ const FAQSection = () => {
     },
     {
       question: "What payment methods and guarantees do you offer?",
-      answer: "We accept all major credit cards (Visa, Mastercard, American Express), PayPal, and Apple Pay. All transactions are processed through secure, encrypted channels. We offer a 30-day money-back guarantee on all products - if you're not completely satisfied, contact our support team within 30 days of purchase for a full refund."
+      answer: "We accept all major credit cards (Visa, Mastercard, American Express), PayPal, and Apple Pay. All transactions are processed through secure, encrypted channels. We offer a 30-day money-back guarantee on all products - if you're not completely satisfied, contact our support team at support@avsafesolution.com within 30 days of purchase for a full refund."
     },
     {
       question: "Can I use the antivirus on multiple devices?",

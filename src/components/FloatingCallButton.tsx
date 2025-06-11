@@ -4,7 +4,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const FloatingCallButton = () => {
   const isMobile = useIsMobile();
-  const phoneNumber = "+18335344002";
+  const phoneNumber = "+1 877-593-3166";
 
   if (!isMobile) return null;
 
@@ -85,7 +85,7 @@ const FloatingCallButton = () => {
           }}
         />
         <Phone className="w-6 h-6 relative" strokeWidth={2.5} />
-        <span className="text-xl tracking-wide relative">Call Us Now</span>
+        <span className="text-xl tracking-wide relative">Call Us Now: +1 877-593-3166</span>
       </motion.a>
     </motion.div>
   );

@@ -29,7 +29,7 @@ const TermsSection = () => {
                 To request a cancellation, simply email us at:
               </p>
               <p className="text-blue-600 font-medium mt-2">
-                📧 contact@bestavdeals.shop
+                📧 support@avsafesolution.com
               </p>
               <p className="text-gray-700 mt-2">
                 We will process your refund within 15 days of receiving the returned goods, using the same payment method you used for the original order. No additional fees will be charged.
@@ -93,7 +93,7 @@ const TermsSection = () => {
                 If you have any questions or concerns about our Refund & Cancellation Policy, don't hesitate to reach out:
               </p>
               <p className="text-blue-600 font-medium mt-2">
-                📧 contact@bestavdeals.shop
+                📧 support@avsafesolution.com
               </p>
               <p className="text-gray-700 mt-2">
                 We're here to help and ensure your experience with Best AV Deals is a smooth one.

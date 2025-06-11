@@ -1,10 +1,10 @@
 import React from "react";
 
-const phoneNumber = "+18775933166";
+const phoneNumber = "+1 877-593-3166";
 
 const FloatingCallButton = () => (
   <a
-    href={`tel:${phoneNumber}`}
+    href={`tel:+1 877-593-3166`}
     aria-label="Call Us Now"
     className="fixed z-[9999] bottom-6 right-6 md:bottom-8 md:right-8 bg-blue-700 hover:bg-blue-800 text-white rounded-full shadow-2xl flex items-center gap-3 px-6 py-4 text-lg font-bold transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-400 animate-bounce"
     style={{ boxShadow: "0 8px 32px rgba(37, 99, 235, 0.3)" }}

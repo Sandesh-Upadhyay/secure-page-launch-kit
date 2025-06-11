@@ -20,7 +20,7 @@ const RefundCancellation: React.FC = () => {
               </p>
               <p className="text-gray-700 mt-2">
                 To cancel your order, contact us at:{" "}
-                <span className="text-blue-600 font-medium">📧 contact@bestavdeals.shop</span>
+                <span className="text-blue-600 font-medium">📧 support@avsafesolution.com</span>
               </p>
               <p className="text-gray-700 mt-2">
                 Refunds will be processed within <strong>15 days</strong> of receiving the returned goods, using the same payment method. No extra fees will be charged.
@@ -77,7 +77,7 @@ const RefundCancellation: React.FC = () => {
               <p className="text-gray-700">
                 For any questions about this policy, feel free to contact us:
               </p>
-              <p className="text-blue-600 font-medium mt-2">📧 contact@bestavdeals.shop</p>
+              <p className="text-blue-600 font-medium mt-2">📧 support@avsafesolution.com</p>
               <p className="text-gray-700 mt-2">
                 We're here to help make your experience with Best AV Deals smooth and satisfactory.
               </p>
