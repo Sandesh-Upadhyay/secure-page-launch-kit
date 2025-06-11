@@ -12,14 +12,14 @@ interface NavigationProps {
 
 export const Navigation = ({ scrollToSection }: NavigationProps) => {
   return (
-    <nav className="hidden lg:flex items-center space-x-8 flex-1 justify-center">
+    <nav className="flex flex-row items-center gap-4 overflow-x-auto py-2 w-full justify-center">
       <button
         onClick={(e) => {
           e.preventDefault()
           window.scrollTo({ top: 0, behavior: 'smooth' })
           window.location.href = '/'
         }}
-        className="text-white hover:text-orange-400 transition-colors duration-300 cursor-pointer"
+        className="text-gray-900 hover:text-blue-600 transition-colors duration-300 cursor-pointer text-lg"
       >
         Home
       </button>
@@ -27,8 +27,7 @@ export const Navigation = ({ scrollToSection }: NavigationProps) => {
       {/* Shop Dropdown */}
       <button
         onClick={() => scrollToSection('products')}
-        className="text-white hover:text-orange-400 transition-colors duration-300 cursor-pointer text-lg font-semibold"
-        style={{ minWidth: 80 }}
+        className="text-gray-900 hover:text-blue-600 transition-colors duration-300 cursor-pointer text-lg"
       >
         Shop
       </button>
@@ -36,42 +35,41 @@ export const Navigation = ({ scrollToSection }: NavigationProps) => {
       {/* Deals with sparkle icon */}
       <button
         onClick={() => scrollToSection('products')}
-        className="flex items-center space-x-2 text-white hover:text-orange-400 transition-colors duration-300 group text-lg font-semibold"
-        style={{ minWidth: 80 }}
+        className="flex items-center gap-2 text-gray-900 hover:text-blue-600 transition-colors duration-300 group text-lg"
       >
         <span>Deals</span>
-        <Sparkles className="h-4 w-4 text-yellow-400 group-hover:text-yellow-300" />
+        <Sparkles className="h-4 w-4 text-blue-500 group-hover:text-blue-600" />
       </button>
 
             
       {/* Policies Dropdown */}
       <DropdownMenu>
-        <DropdownMenuTrigger className="flex items-center space-x-1 text-white hover:text-orange-400 transition-colors duration-300">
+        <DropdownMenuTrigger className="flex items-center gap-1 text-gray-900 hover:text-blue-600 transition-colors duration-300 text-lg">
           <span>Support</span>
           <ChevronDown className="h-4 w-4 ml-1" />
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="bg-slate-800 border-slate-700 p-2 min-w-[200px]">
+        <DropdownMenuContent className="bg-white border-gray-200 p-2 min-w-[200px] shadow-lg">
           <DropdownMenuItem 
             onClick={() => scrollToSection("cookies")}
-            className="text-white hover:bg-slate-700 hover:text-orange-400 transition-colors"
+            className="text-gray-800 hover:bg-gray-100 hover:text-blue-600 transition-colors"
           >
             Cookies Policy
           </DropdownMenuItem>
           <DropdownMenuItem 
             onClick={() => scrollToSection("privacy")}
-            className="text-white hover:bg-slate-700 hover:text-orange-400 transition-colors"
+            className="text-gray-800 hover:bg-gray-100 hover:text-blue-600 transition-colors"
           >
             Privacy Policy
           </DropdownMenuItem>
           <DropdownMenuItem 
             onClick={() => scrollToSection("refund")}
-            className="text-white hover:bg-slate-700 hover:text-orange-400 transition-colors"
+            className="text-gray-800 hover:bg-gray-100 hover:text-blue-600 transition-colors"
           >
             Refund Policy
           </DropdownMenuItem>
           <DropdownMenuItem 
             onClick={() => scrollToSection("terms")}
-            className="text-white hover:bg-slate-700 hover:text-orange-400 transition-colors"
+            className="text-gray-800 hover:bg-gray-100 hover:text-blue-600 transition-colors"
           >
             Terms & Conditions
           </DropdownMenuItem>

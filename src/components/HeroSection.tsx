@@ -1,6 +1,7 @@
 import { useCart } from "@/contexts/CartContext"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
+import FloatingCallButton from "./FloatingCallButton"
 import { Phone } from "lucide-react"
 
 const SaleBadge = () => (
@@ -108,8 +109,9 @@ const HeroSection = () => {
   ]
 
   return (
-    <section className="relative py-20 overflow-hidden bg-gradient-to-br from-blue-50 to-teal-50">
-      <div className="container relative mx-auto px-4">
+    <>
+      <section className="relative py-12 md:py-20 overflow-hidden bg-gradient-to-br from-blue-50 to-teal-50">
+        <div className="container relative mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center mb-16">
             <h1 className="text-4xl md:text-6xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 animate-gradient-x">
               Exclusive Security Software Deals
@@ -119,7 +121,7 @@ const HeroSection = () => {
               <span className="text-blue-500">Trusted.</span>
             </span>
           </h1>
-          <p className="text-2xl md:text-3xl text-gray-700 mb-8 max-w-3xl mx-auto" style={{fontWeight: 500}}>
+          <p className="text-xl md:text-2xl lg:text-3xl text-gray-800 mb-8 max-w-3xl mx-auto px-4" style={{fontWeight: 500}}>
             Comprehensive protection for your digital world
           </p>
           <div className="flex flex-col items-center gap-6">
@@ -297,7 +299,7 @@ const HeroSection = () => {
             100% { transform: scale(1); }
           }
         `}</style>
-        <div id="products" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+        <div id="products" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-4 relative z-10">
           {products.map((product) => (
             <motion.div 
               key={product.name}
@@ -365,6 +367,8 @@ const HeroSection = () => {
                       </div>
       </div>
     </section>
+    <FloatingCallButton />
+    </>
   );
 };
 

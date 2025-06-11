@@ -1,19 +1,15 @@
 import { cn } from "@/lib/utils"
-import { Sparkles, ChevronRight, Moon, Sun } from "lucide-react"
+import { Sparkles, ChevronRight } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
 interface MobileMenuProps {
   isMobileMenuOpen: boolean
   scrollToSection: (sectionId: string) => void
-  toggleTheme: () => void
-  theme: string
 }
 
 export const MobileMenu = ({ 
   isMobileMenuOpen, 
-  scrollToSection,
-  toggleTheme,
-  theme
+  scrollToSection
 }: MobileMenuProps) => {
   const menuItems = [
     { 
@@ -36,15 +32,6 @@ export const MobileMenu = ({
       href: "/contact",
       icon: <ChevronRight className="h-4 w-4 text-blue-300" />
     },
-    { 
-      label: "Theme",
-      action: toggleTheme,
-      icon: theme === "dark" ? (
-        <Sun className="h-4 w-4 text-amber-300" />
-      ) : (
-        <Moon className="h-4 w-4 text-indigo-300" />
-      )
-    }
   ]
 
   const supportItems = [
@@ -78,7 +65,7 @@ export const MobileMenu = ({
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="lg:hidden overflow-hidden bg-white/5 backdrop-blur-xl border-t border-white/10"
+          className="lg:hidden overflow-hidden bg-white border-t border-gray-200 shadow-md"
         >
           <nav>
             <motion.div 
@@ -88,7 +75,7 @@ export const MobileMenu = ({
               transition={{ delay: 0.2 }}
             >
               <motion.h3 
-                className="px-4 py-2 text-sm font-semibold text-white/70 uppercase tracking-wider"
+                className="px-4 py-2 text-sm font-semibold text-gray-500 uppercase tracking-wider"
                 initial={{ x: -20 }}
                 animate={{ x: 0 }}
                 transition={{ delay: 0.3 }}
@@ -109,7 +96,7 @@ export const MobileMenu = ({
                       {...(item.href ? { href: item.href } : { onClick: item.action })}
                       className={cn(
                         "flex items-center justify-between w-full px-4 py-3 rounded-lg",
-                        "text-left text-white hover:bg-white/10 transition-all duration-200"
+                        "text-left text-gray-900 hover:bg-gray-100 transition-all duration-200"
                       )}
                     >
                       <div className="flex items-center gap-3">
@@ -124,13 +111,13 @@ export const MobileMenu = ({
             </motion.div>
 
             <motion.div 
-              className="flex flex-col space-y-1 p-4 border-t border-white/10"
+              className="flex flex-col space-y-1 p-4 border-t border-gray-200"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
             >
               <motion.h3 
-                className="px-4 py-2 text-sm font-semibold text-white/70 uppercase tracking-wider"
+                className="px-4 py-2 text-sm font-semibold text-gray-500 uppercase tracking-wider"
                 initial={{ x: -20 }}
                 animate={{ x: 0 }}
                 transition={{ delay: 0.7 }}
@@ -147,7 +134,7 @@ export const MobileMenu = ({
                 >
                   <button
                     onClick={item.action}
-                    className="flex items-center justify-between w-full px-4 py-3 rounded-lg text-left text-white/80 hover:bg-white/10 transition-all duration-200"
+                    className="flex items-center justify-between w-full px-4 py-3 rounded-lg text-left text-gray-700 hover:bg-gray-100 transition-all duration-200"
                   >
                     <div className="flex items-center gap-3">
                       {item.icon}
